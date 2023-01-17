@@ -111,10 +111,8 @@ defineComponent({
         </div>
 
         <SponsorCloud />
-        <!-- Call to encourage nomination here -->
         <NominateCTA />
         <ScholarshipCTA />
-        <!-- Call to encourage donation here -->
         <DonateCTA />
     </AppLayout>
 </template>
