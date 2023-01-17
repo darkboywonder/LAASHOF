@@ -1,0 +1,25 @@
+export function useAchievements() {
+    return [
+        'Olmpian or Equivalent',
+        'World Champion or Equivalent',
+        'Professional',
+        'Semi-Professional/Minor League',
+        'Division I College All-American',
+        'Division II College All-American',
+        'Division III College All-American',
+        'NAIA College All-American',
+        'College Sports Scholarship Athlete',
+        'High School All-American',
+        'Kentucky State Champion',
+        'Kentucky State Champion Runner-up',
+        'All-State',
+        'All-State Honorable Mention',
+        'Regional Champion',
+        'District Champion',
+        'Recreational Champion',
+        'Most Valuable Player/Athlete',
+        'Athletic Phenom',
+        'Crowd Favorite/Pleaser',
+        'NONE',
+    ];
+}
