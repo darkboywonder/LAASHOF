@@ -1,5 +1,6 @@
 <script setup>
 import { TrophyIcon } from '@heroicons/vue/24/outline';
+import { Link } from '@inertiajs/inertia-vue3';
 </script>
 <template>
     <div class="bg-red-800">
@@ -20,11 +21,12 @@ import { TrophyIcon } from '@heroicons/vue/24/outline';
                 Malesuada adipiscing sagittis vel nulla nec.
             </p>
             <p class="sm:space-x-4">
-                <a
-                    href="#"
+                <Link
+                    :href="route('nominate.individual.create')"
                     class="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-red-50 sm:w-auto"
-                    >Individual</a
                 >
+                    Individual
+                </Link>
                 <a
                     href="#"
                     class="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-red-50 sm:w-auto"
