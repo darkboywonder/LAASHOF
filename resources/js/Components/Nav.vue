@@ -114,7 +114,7 @@
                                         class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                                     >
                                         <div
-                                            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-600 text-white sm:h-12 sm:w-12"
+                                            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white sm:h-12 sm:w-12"
                                         >
                                             <component
                                                 :is="solution.icon"
@@ -148,7 +148,7 @@
                                                 Enterprise
                                             </div>
                                             <span
-                                                class="ml-3 inline-flex items-center rounded-full bg-indigo-100 px-3 py-0.5 text-xs font-medium leading-5 text-indigo-800"
+                                                class="ml-3 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-xs font-medium leading-5 text-green-800"
                                                 >New</span
                                             >
                                         </div>
@@ -167,7 +167,7 @@
                     <PopoverButton
                         :class="[
                             open ? 'text-gray-900' : 'text-gray-500',
-                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
+                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2',
                         ]"
                     >
                         <span>Nominate</span>
@@ -226,7 +226,7 @@
                 <a
                     href="#"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
-                    >Contact Us</a
+                    >Contact</a
                 >
             </PopoverGroup>
             <div
@@ -240,7 +240,7 @@
                 <a
                     href="#"
                     class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-bold text-white shadow-sm hover:bg-green-700"
-                    >Sign up</a
+                    >Membership</a
                 >
             </div>
         </div>
@@ -271,7 +271,7 @@
                             </div>
                             <div class="-mr-2">
                                 <PopoverButton
-                                    class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                    class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-600"
                                 >
                                     <span class="sr-only">Close menu</span>
                                     <XMarkIcon
@@ -290,7 +290,7 @@
                                     class="-m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
                                 >
                                     <div
-                                        class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white"
+                                        class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
                                     >
                                         <component
                                             :is="solution.icon"
@@ -337,8 +337,8 @@
                         <div class="mt-6">
                             <a
                                 href="#"
-                                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                                >Sign up</a
+                                class="flex w-full items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700"
+                                >Become A Member</a
                             >
                             <p
                                 class="mt-6 text-center text-base font-medium text-gray-500"
@@ -347,7 +347,7 @@
                                 {{ ' ' }}
                                 <a
                                     href="#"
-                                    class="text-indigo-600 hover:text-indigo-500"
+                                    class="text-green-600 hover:text-green-500"
                                     >Sign in</a
                                 >
                             </p>
