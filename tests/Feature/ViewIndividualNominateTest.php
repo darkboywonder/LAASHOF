@@ -13,7 +13,7 @@ class ViewIndividualNominateTest extends TestCase
     /** @test */
     public function guest_can_view_the_individual_nomination_form()
     {
-        $response = $this->get(route('nominate.individual'));
+        $response = $this->get(route('nominate.individual.create'));
 
         $response->assertOk()
             ->assertInertia(

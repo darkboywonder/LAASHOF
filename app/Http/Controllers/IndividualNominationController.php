@@ -17,12 +17,14 @@ class IndividualNominationController extends Controller
 
     public function store(StoreNomineeRequest $request)
     {
-        dd($request->all());
-        Nominator::create($request->input('nominator'))
-            ->nominees()->create(array_merge(
-                $request->input('nominee'),
-                $request->only(['representative_attending', 'absence_reason', 'accomplishment_summary', 'additional_factors'])
-            ));
+        $nominee = Nominee::create($request->input('nominee'));
+        $nominator = Nominator::create($request->input('nominator'));
+        $nominee->nominator()->associate($nominator);
+        $nominee->save();
+
+        if ($request->has('relative.first_name')) {
+            $nominee->relative()->create($request->input('relative'));
+        }
 
         return redirect()->back();
     }

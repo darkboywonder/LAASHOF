@@ -168,55 +168,6 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_achievements_are_required_for_nominee_creation()
-    {
-        $response = $this->post(route('nominate.individual.store'), $this->validParams([],[]));
-
-        $response->assertRedirect();
-        $response->assertSessionHasErrors('nominee.achievements');
-    }
-
-    /** @test */
-    public function nominee_achievements_must_be_an_array_for_nominee_creation()
-    {
-        $response = $this->post(route('nominate.individual.store'), $this->validParams([
-            'nominee' => [
-                'achievements' => 'professional',
-            ]
-        ]));
-
-        $response->assertRedirect();
-        $response->assertSessionHasErrors('nominee.achievements');
-    }
-
-    /** @test */
-    public function nominee_attending_is_required_for_nominee_creation()
-    {
-        $response = $this->post(route('nominate.individual.store'), $this->validParams([
-            'nominee' => [
-                'attending' => '',
-            ]
-        ]));
-
-        $response->assertRedirect();
-        $response->assertSessionHasErrors('nominee.attending');
-    }
-
-    /** @test */
-    public function nominee_deceased_is_required_if_attending_value_is_no_for_nominee_creation()
-    {
-        $response = $this->post(route('nominate.individual.store'), $this->validParams([
-            'nominee' => [
-                'attending' => 'no',
-                'deceased' => ''
-            ]
-        ]));
-
-        $response->assertRedirect();
-        $response->assertSessionHasErrors('nominee.deceased');
-    }
-
-    /** @test */
     public function nominator_first_name_is_required_for_nominee_creation()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
@@ -335,20 +286,6 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function representative_attending_is_required_if_nominee_attending_is_no_for_nominee_creation()
-    {
-        $response = $this->post(route('nominate.individual.store'), $this->validParams([
-            'nominee' => [
-                'attending' => 'no',
-            ],
-            'representative_attending' => '',
-        ]));
-
-        $response->assertRedirect();
-        $response->assertSessionHasErrors('representative_attending');
-    }
-
-    /** @test */
     public function a_nominee_is_created_on_successful_submission()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams());
@@ -368,12 +305,11 @@ class StoreIndividualNominationTest extends TestCase
         $this->assertNotNull($nominee->nominator);
     }
 
-    private function validParams($overrides = [], $achievements = ['professional'])
+    private function validParams($overrides = [])
     {
         return array_replace_recursive([
             'nominee' => [
                 'first_name' => 'shawn',
-                'middle_name' => 'gregory',
                 'last_name' => 'jones',
                 'birthday' => '1984-04-02',
                 'gender' => 'male',
@@ -384,13 +320,11 @@ class StoreIndividualNominationTest extends TestCase
                 'state' => 'Ky',
                 'zip' => '40505',
                 'category' => 'athlete',
-                'achievements' => $achievements,
-                'attending' => 'yes',
-                'deceased' => '',
+                'deceased' => 'no',
+                'accomplishment_summary' => '',
             ],
             'nominator' => [
                 'first_name' => 'William',
-                'middle_name' => '',
                 'last_name' => 'Jones',
                 'phone' => '6062998405',
                 'email' => 'wj296@aol.com',
@@ -399,9 +333,6 @@ class StoreIndividualNominationTest extends TestCase
                 'state' => 'Ky',
                 'zip' => '40505',
             ],
-            'representative_attending' => '',
-            'accomplishment_summary' => '',
-            'additional_factors' => '',
         ], $overrides);
     }
 }
