@@ -63,7 +63,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_phone_is_required_for_nominee_creation()
+    public function nominee_phone_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -76,7 +76,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_email_is_required_for_nominee_creation()
+    public function nominee_email_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -89,7 +89,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_email_is_an_actual_email_for_nominee_creation()
+    public function nominee_email_is_an_actual_email_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -102,7 +102,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_address_is_required_for_nominee_creation()
+    public function nominee_address_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -115,7 +115,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_city_is_required_for_nominee_creation()
+    public function nominee_city_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -129,7 +129,7 @@ class StoreIndividualNominationTest extends TestCase
 
 
     /** @test */
-    public function nominee_state_is_required_for_nominee_creation()
+    public function nominee_state_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -142,7 +142,7 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function nominee_zip_is_required_for_nominee_creation()
+    public function nominee_zip_is_required_for_nominee_creation_if_deceased_is_no()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams([
             'nominee' => [
@@ -152,6 +152,151 @@ class StoreIndividualNominationTest extends TestCase
 
         $response->assertRedirect();
         $response->assertSessionHasErrors('nominee.zip');
+    }
+
+    /** @test */
+    public function relative_first_name_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'first_name' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.first_name');
+    }
+
+    /** @test */
+    public function relative_last_name_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'last_name' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.last_name');
+    }
+
+    /** @test */
+    public function relative_phone_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'phone' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.phone');
+    }
+
+    /** @test */
+    public function relative_email_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'email' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.email');
+    }
+
+    /** @test */
+    public function relative_email_must_be_an_email_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'email' => 'maria@',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.email');
+    }
+
+    /** @test */
+    public function relative_address_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'address' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.address');
+    }
+
+    /** @test */
+    public function relative_city_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'city' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.city');
+    }
+
+    /** @test */
+    public function relative_state_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'state' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.state');
+    }
+
+
+    /** @test */
+    public function relative_zip_is_required_for_nominee_creation_if_deceased_is_yes()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'deceased' => 'yes'
+            ],
+            'relative' => [
+                'zip' => '',
+            ]
+        ]));
+
+        $response->assertRedirect();
+        $response->assertSessionHasErrors('relative.zip');
     }
 
     /** @test */
@@ -305,6 +450,30 @@ class StoreIndividualNominationTest extends TestCase
         $this->assertNotNull($nominee->nominator);
     }
 
+    /** @test */
+    public function a_relative_is_created_and_associated_to_the_nominee_on_a_successful_submission_if_nominee_is_deceased()
+    {
+        $response = $this->post(route('nominate.individual.store'), $this->validParams([
+            'nominee' => [
+                'phone' => null,
+                'email' => null,
+                'address' => null,
+                'city' => null,
+                'state' => null,
+                'zip' => null,
+                'deceased' => 'yes',
+            ],
+        ]));
+
+        $nominee = Nominee::with('relative')->firstWhere([
+            'first_name' => 'shawn',
+            'last_name' => 'jones',
+        ]);
+        $response->assertRedirect();
+        $this->assertNotNull($nominee);
+        $this->assertNotNull($nominee->relative);
+    }
+
     private function validParams($overrides = [])
     {
         return array_replace_recursive([
@@ -333,6 +502,16 @@ class StoreIndividualNominationTest extends TestCase
                 'state' => 'Ky',
                 'zip' => '40505',
             ],
+            'relative' => [
+                'first_name' => 'maria',
+                'last_name' => 'jones',
+                'phone' => '4077894561',
+                'email' => 'uglypretty@aol.com',
+                'address' => '2724 Kingshighway',
+                'city' => 'Fairmont Cty',
+                'state' => 'IL',
+                'zip' => '62201',
+            ]
         ], $overrides);
     }
 }
