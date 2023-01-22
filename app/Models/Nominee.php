@@ -9,12 +9,13 @@ class Nominee extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'achievements' => 'array',
-    ];
-
     public function nominator()
     {
         return $this->belongsTo(Nominator::class);
+    }
+
+    public function relative()
+    {
+        return $this->hasOne(Relative::class);
     }
 }
