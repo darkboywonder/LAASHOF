@@ -36,16 +36,7 @@ const form = useForm({
         zip: '',
         category: 'athlete',
         deceased: 'no',
-        relative: {
-            first_name: '',
-            last_name: '',
-            phone: '',
-            email: '',
-            address: '',
-            city: '',
-            state: 'KY',
-            zip: '',
-        },
+        accomplishment_summary: '',
     },
     nominator: {
         first_name: '',
@@ -57,7 +48,16 @@ const form = useForm({
         state: 'KY',
         zip: '',
     },
-    accomplishment_summary: '',
+    relative: {
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: '',
+        address: '',
+        city: '',
+        state: 'KY',
+        zip: '',
+    },
 });
 
 function submit() {
@@ -348,7 +348,7 @@ function submit() {
                                                     :disabled="form.processing"
                                                     autocomplete="relative_first_name"
                                                     :error="errors['nominee.relative.first_name']"
-                                                    v-model="form.nominee.relative.first_name"
+                                                    v-model="form.relative.first_name"
                                                     required
                                                 />
                                             </div>
@@ -369,7 +369,7 @@ function submit() {
                                                     :disabled="form.processing"
                                                     autocomplete="relative_last_name"
                                                     :error="errors['nominee.relative.last_name']"
-                                                    v-model="form.nominee.relative.last_name"
+                                                    v-model="form.relative.last_name"
                                                     required
                                                 />
                                             </div>
@@ -388,7 +388,7 @@ function submit() {
                                                     id="relative_email"
                                                     :disabled="form.processing"
                                                     autocomplete="relative_email"
-                                                    v-model=" form.nominee.relative.email"
+                                                    v-model=" form.relative.email"
                                                     :error="errors['nominee.relative.email']"
                                                     required
                                                 />
@@ -409,7 +409,7 @@ function submit() {
                                                     id="relative_nominee_phone"
                                                     :disabled="form.processing"
                                                     autocomplete="relative_nominee_phone"
-                                                    v-model="form.nominee.relative.phone"
+                                                    v-model="form.relative.phone"
                                                     :error="errors['nominee.relative.phone']"
                                                     required
                                                 />
@@ -428,7 +428,7 @@ function submit() {
                                                     id="relative_address"
                                                     :disabled="form.processing"
                                                     autocomplete="relative_address"
-                                                    v-model="form.nominee.relative.address"
+                                                    v-model="form.relative.address"
                                                     :error="errors['nominee.relative.address']"
                                                     required
                                                 />
@@ -448,7 +448,7 @@ function submit() {
                                                     id="relative_city"
                                                     :disabled="form.processing"
                                                     autocomplete="relative_city"
-                                                    v-model="form.nominee.relative.city"
+                                                    v-model="form.relative.city"
                                                     :error="errors['nominee.relative.city']"
                                                     required
                                                 />
@@ -469,7 +469,7 @@ function submit() {
                                                     :disabled="form.processing"
                                                     autocomplete="relative_state"
                                                     :options="states"
-                                                    v-model="form.nominee.relative.state"
+                                                    v-model="form.relative.state"
                                                     :error="errors['nominee.relative.state']"
                                                     required
                                                 />
@@ -489,7 +489,7 @@ function submit() {
                                                     id="relative_zip"
                                                     :disabled="form.processing"
                                                     autocomplete="relative_zip"
-                                                    v-model="form.nominee.relative.zip"
+                                                    v-model="form.relative.zip"
                                                     :error="errors['nominee.relative.zip']"
                                                     required
                                                 />
@@ -772,7 +772,7 @@ function submit() {
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6">
                                             <Label
-                                                for="accomplishment-summary"
+                                                for="nominee-accomplishment-summary"
                                                 value="Summarize Accomplishments"
                                             />
                                             <p
@@ -785,14 +785,15 @@ function submit() {
                                                 contributor/benefactor.
                                             </p>
                                             <textarea
-                                                id="accomplishment-summary"
-                                                name="accomplishment-summary"
+                                                id="nominee-accomplishment-summary"
+                                                name="nominee-accomplishment-summary"
                                                 rows="3"
                                                 :disabled="form.processing"
                                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
                                                 placeholder="Type here..."
                                                 v-model="
-                                                    form.accomplishment_summary
+                                                    form.nominee
+                                                        .accomplishment_summary
                                                 "
                                             />
                                         </div>
