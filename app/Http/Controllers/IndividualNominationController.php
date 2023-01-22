@@ -17,12 +17,15 @@ class IndividualNominationController extends Controller
 
     public function store(StoreNomineeRequest $request)
     {
-        $nominee = Nominee::create($request->input('nominee'));
+        $nominee = Nominee::create(array_merge(
+            $request->input('nominee'),
+            ['deceased' => $request->input('nominee.deceased') === 'yes' ? true : false]
+        ));
         $nominator = Nominator::create($request->input('nominator'));
         $nominee->nominator()->associate($nominator);
         $nominee->save();
 
-        if ($request->has('relative.first_name')) {
+        if ($nominee->deceased) {
             $nominee->relative()->create($request->input('relative'));
         }
 

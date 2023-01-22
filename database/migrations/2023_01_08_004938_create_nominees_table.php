@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
             $table->string('category');
-            $table->string('deceased');
+            $table->boolean('deceased');
             $table->text('accomplishment_summary')->nullable();
             $table->timestamps();
         });
