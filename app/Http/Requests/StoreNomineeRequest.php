@@ -46,7 +46,7 @@ class StoreNomineeRequest extends FormRequest
             'nominator.zip' => 'required|string',
             'relative.first_name' => 'required_if:nominee.deceased,yes|string|nullable',
             'relative.last_name' => 'required_if:nominee.deceased,yes|string|nullable',
-            'relative.email' => 'required_if:nominee.deceased,yes|string|nullable',
+            'relative.email' => 'required_if:nominee.deceased,yes|email|nullable',
             'relative.phone' => 'required_if:nominee.deceased,yes|string|nullable',
             'relative.address' => 'required_if:nominee.deceased,yes|string|nullable',
             'relative.city' => 'required_if:nominee.deceased,yes|string|nullable',
