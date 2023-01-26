@@ -69,7 +69,7 @@ function submit() {
     <AppLayout>
         <PageHeader
             title="Individual Nomination"
-            slug="Nominate an Individual"
+            slug="2023 Individual Nomination Form"
             description="Nominate an Individual for the upcoming induction class."
         />
         <ErrorAlert />

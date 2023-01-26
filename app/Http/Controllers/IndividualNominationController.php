@@ -21,7 +21,7 @@ class IndividualNominationController extends Controller
             $request->input('nominee'),
             ['deceased' => $request->input('nominee.deceased') === 'yes' ? true : false]
         ));
-        $nominator = Nominator::create($request->input('nominator'));
+        $nominator = Nominator::firstOrCreate(['email' => $request->input('nominator.email')], $request->input('nominator'));
         $nominee->nominator()->associate($nominator);
         $nominee->save();
 
