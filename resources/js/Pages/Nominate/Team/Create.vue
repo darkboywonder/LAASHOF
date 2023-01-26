@@ -26,8 +26,7 @@ const form = useForm({
         name: '',
         sport: '',
         year: '',
-        head_coach: '',
-        members: [],
+        coach: '',
         accomplishment_summary: '',
         level: 'high-school',
         players: [
@@ -78,7 +77,7 @@ const form = useForm({
 });
 
 function submit() {
-    Inertia.post(route('nominate.individual.store'), form);
+    Inertia.post(route('nominate.team.store'), form);
 }
 
 function addPlayer() {
@@ -184,19 +183,19 @@ function deletePlayer(index) {
 
                                         <div class="col-span-6 sm:col-span-3">
                                             <Label
-                                                for="team_head_coach"
+                                                for="team_coach"
                                                 value="Head Coach"
                                                 required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
                                             <TextInput
-                                                name="team_head_coach"
-                                                id="team_head_coach"
+                                                name="team_coach"
+                                                id="team_coach"
                                                 :disabled="form.processing"
-                                                autocomplete="team_head_coach"
-                                                v-model="form.team.head_coach"
-                                                :error="errors['team.head_coach']"
+                                                autocomplete="team_coach"
+                                                v-model="form.team.coach"
+                                                :error="errors['team.coach']"
                                                 required
                                             />
                                         </div>
