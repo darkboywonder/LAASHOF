@@ -3,7 +3,9 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
 
 /*
@@ -32,7 +34,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/nominate/individual', [IndividualNominationController::class, 'create'])->name('nominate.individual.create');
 Route::post('/nominate/individual', [IndividualNominationController::class, 'store'])->name('nominate.individual.store');
-//Route::get('/nominate/team', TeamNominationController)->name('nominate.team')->name('nominate.team.create');
+Route::get('/nominate/team', [TeamNominationController::class, 'create'])->name('nominate.team.create');
+Route::post('/nominate/team', [TeamNominationController::class, 'store'])->name('nominate.team.store');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact', [ContactController::class, 'post'])->name('contact.post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

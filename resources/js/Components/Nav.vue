@@ -17,8 +17,9 @@
                     <Bars3Icon class="h-6 w-6" aria-hidden="true" />
                 </PopoverButton>
             </div>
+
             <PopoverGroup as="nav" class="hidden space-x-10 md:flex">
-                <Popover class="relative" v-slot="{ open }">
+                <!-- <Popover class="relative" v-slot="{ open }">
                     <PopoverButton
                         :class="[
                             open ? 'text-gray-900' : 'text-gray-500',
@@ -71,9 +72,9 @@
                             </div>
                         </PopoverPanel>
                     </transition>
-                </Popover>
+                </Popover> -->
 
-                <Popover class="relative" v-slot="{ open }">
+                <!-- <Popover class="relative" v-slot="{ open }">
                     <PopoverButton
                         :class="[
                             open ? 'text-gray-900' : 'text-gray-500',
@@ -161,7 +162,7 @@
                             </div>
                         </PopoverPanel>
                     </transition>
-                </Popover>
+                </Popover> -->
 
                 <Popover class="relative" v-slot="{ open }">
                     <PopoverButton
@@ -218,13 +219,13 @@
                     </transition>
                 </Popover>
 
-                <a
+                <!-- <a
                     href="#"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                     >Scholarship</a
-                >
+                > -->
                 <a
-                    href="#"
+                    :href="route('contact.create')"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                     >Contact</a
                 >
@@ -460,7 +461,7 @@ const nominationOptions = [
         name: 'team',
         description:
             'Learn how to maximize our platform to get the most out of it.',
-        href: '#',
+        href: route('nominate.team.create'),
     },
 ];
 </script>
