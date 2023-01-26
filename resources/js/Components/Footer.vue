@@ -184,7 +184,7 @@ const navigation = {
     social: [
         {
             name: 'Facebook',
-            href: '#',
+            href: 'https://www.facebook.com/officiallaashof',
             icon: defineComponent({
                 render: () =>
                     h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -198,7 +198,7 @@ const navigation = {
         },
         {
             name: 'Instagram',
-            href: '#',
+            href: 'https://instagram.com/officiallaashof?igshid=YmMyMTA2M2Y=',
             icon: defineComponent({
                 render: () =>
                     h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -212,7 +212,7 @@ const navigation = {
         },
         {
             name: 'Twitter',
-            href: '#',
+            href: 'https://twitter.com/LAASHOFInc',
             icon: defineComponent({
                 render: () =>
                     h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
