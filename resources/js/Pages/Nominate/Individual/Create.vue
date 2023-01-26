@@ -74,6 +74,56 @@ function submit() {
         <ErrorAlert />
         <form @submit.prevent="submit">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mt-10 sm:mt-0">
+                    <div class="hidden sm:block" aria-hidden="true">
+                        <div class="py-5">
+                            <div class="border-t border-gray-200" />
+                        </div>
+                    </div>
+
+                    <div class="md:grid md:grid-cols-3 md:gap-6">
+                        <div class="md:col-span-1">
+                            <div class="px-4 sm:px-0">
+                                <h3
+                                    class="text-lg font-medium leading-6 text-gray-900"
+                                >
+                                    Nomination Category
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Please select a category for the nominee.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-5 md:col-span-2 md:mt-0">
+                            <div class="overflow-hidden shadow sm:rounded-md">
+                                <div
+                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
+                                >
+                                    <fieldset>
+                                        <legend class="sr-only">
+                                            Categories
+                                        </legend>
+
+                                        <Label
+                                            for="categories"
+                                            value="Categories"
+                                            required
+                                        />
+
+                                        <RadioCardGroupInput
+                                            :message="`Select a category`"
+                                            :options="categories"
+                                            :disabled="form.processing"
+                                            v-model="form.nominee.category"
+                                            required
+                                        />
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="hidden sm:block" aria-hidden="true">
                     <div class="py-5">
                         <div class="border-t border-gray-200" />
@@ -90,8 +140,8 @@ function submit() {
                                     Nominee Information
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Please provide information for the
-                                    individual up for nomination.
+                                    Please provide information for the person
+                                    you are nominating.
                                 </p>
                             </div>
                         </div>
@@ -514,6 +564,67 @@ function submit() {
                                 <h3
                                     class="text-lg font-medium leading-6 text-gray-900"
                                 >
+                                    Accomplishments
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Please select and list all accomplishments
+                                    for the nominee.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-5 md:col-span-2 md:mt-0">
+                            <div class="overflow-hidden shadow sm:rounded-md">
+                                <div
+                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
+                                >
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6">
+                                            <Label
+                                                for="nominee-accomplishment-summary"
+                                                value="Summarize Accomplishments"
+                                            />
+                                            <p
+                                                class="text-sm leading-5 text-gray-500"
+                                            >
+                                                Please summarize the nominee’s
+                                                accomplishments as a coach,
+                                                athlete, para-athlete, contest
+                                                official, or
+                                                contributor/benefactor.
+                                            </p>
+                                            <textarea
+                                                id="nominee-accomplishment-summary"
+                                                name="nominee-accomplishment-summary"
+                                                rows="3"
+                                                :disabled="form.processing"
+                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
+                                                placeholder="Type here..."
+                                                v-model="
+                                                    form.nominee
+                                                        .accomplishment_summary
+                                                "
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden sm:block" aria-hidden="true">
+                    <div class="py-5">
+                        <div class="border-t border-gray-200" />
+                    </div>
+                </div>
+
+                <div class="mt-10 sm:mt-0">
+                    <div class="md:grid md:grid-cols-3 md:gap-6">
+                        <div class="md:col-span-1">
+                            <div class="px-4 sm:px-0">
+                                <h3
+                                    class="text-lg font-medium leading-6 text-gray-900"
+                                >
                                     Nominator Information
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
@@ -683,117 +794,6 @@ function submit() {
                                                 v-model="form.nominator.zip"
                                                 :error="errors['nominator.zip']"
                                                 required
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200" />
-                    </div>
-                </div>
-
-                <div class="mt-10 sm:mt-0">
-                    <div class="md:grid md:grid-cols-3 md:gap-6">
-                        <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                                <h3
-                                    class="text-lg font-medium leading-6 text-gray-900"
-                                >
-                                    Nomination Category
-                                </h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Please select a category for the nominee.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:col-span-2 md:mt-0">
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div
-                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
-                                >
-                                    <fieldset>
-                                        <legend class="sr-only">
-                                            Categories
-                                        </legend>
-
-                                        <Label
-                                            for="categories"
-                                            value="Categories"
-                                            required
-                                        />
-
-                                        <RadioCardGroupInput
-                                            :message="`Select a category`"
-                                            :options="categories"
-                                            :disabled="form.processing"
-                                            v-model="form.nominee.category"
-                                            required
-                                        />
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200" />
-                    </div>
-                </div>
-
-                <div class="mt-10 sm:mt-0">
-                    <div class="md:grid md:grid-cols-3 md:gap-6">
-                        <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                                <h3
-                                    class="text-lg font-medium leading-6 text-gray-900"
-                                >
-                                    Accomplishments
-                                </h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Please select and list all accomplishments
-                                    for the nominee.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:col-span-2 md:mt-0">
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div
-                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
-                                >
-                                    <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6">
-                                            <Label
-                                                for="nominee-accomplishment-summary"
-                                                value="Summarize Accomplishments"
-                                            />
-                                            <p
-                                                class="text-sm leading-5 text-gray-500"
-                                            >
-                                                Please summarize the nominee’s
-                                                accomplishments as a coach,
-                                                athlete, para-athlete, contest
-                                                official, or
-                                                contributor/benefactor.
-                                            </p>
-                                            <textarea
-                                                id="nominee-accomplishment-summary"
-                                                name="nominee-accomplishment-summary"
-                                                rows="3"
-                                                :disabled="form.processing"
-                                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm disabled:bg-gray-50 disabled:cursor-not-allowed"
-                                                placeholder="Type here..."
-                                                v-model="
-                                                    form.nominee
-                                                        .accomplishment_summary
-                                                "
                                             />
                                         </div>
                                     </div>
