@@ -625,7 +625,7 @@ function submit() {
                                 <h3
                                     class="text-lg font-medium leading-6 text-gray-900"
                                 >
-                                    Nominator Information
+                                    Your Information
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
                                     Please provide information for the person
