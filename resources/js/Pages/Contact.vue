@@ -95,7 +95,6 @@ function submit() {
                 </svg>
 
                 <PageHeader
-                    title="contact us"
                     slug="Let's Talk"
                     description="Contact us to learn more about our organization or
                         scholarship opportunities."

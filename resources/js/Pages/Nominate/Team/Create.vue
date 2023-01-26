@@ -92,7 +92,6 @@ function deletePlayer(index) {
 <template>
     <AppLayout>
         <PageHeader
-            title="Team Nomination"
             slug="Nominate a Team"
             description="Nominate a team for the upcoming induction class."
         />
