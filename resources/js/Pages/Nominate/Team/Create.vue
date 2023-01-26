@@ -241,10 +241,7 @@ function deletePlayer(index) {
                                                         required
                                                     />
                                                     <p class="text-sm leading-5 text-gray-500" >
-                                                        A list of all the users
-                                                        in your account
-                                                        including their name,
-                                                        title, email and role.
+                                                        Please list all team members.
                                                     </p>
                                                 </div>
                                                 <div
