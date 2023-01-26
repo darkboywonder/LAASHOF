@@ -2,7 +2,7 @@ export function useCategories() {
     return [
         {
             id: 'athlete',
-            title: 'Athlete/Para-Athlete',
+            title: 'Athlete',
             description:
                 'A former athlete whose achievements were extraordinary and merit local recognition.',
         },

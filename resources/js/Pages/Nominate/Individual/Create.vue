@@ -567,8 +567,8 @@ function submit() {
                                     Accomplishments
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Please select and list all accomplishments
-                                    for the nominee.
+                                    Please list all sports-related
+                                    accomplishments.
                                 </p>
                             </div>
                         </div>
@@ -587,10 +587,9 @@ function submit() {
                                                 class="text-sm leading-5 text-gray-500"
                                             >
                                                 Please summarize the nominee’s
-                                                accomplishments as a coach,
-                                                athlete, para-athlete, contest
-                                                official, or
-                                                contributor/benefactor.
+                                                accomplishments as an athlete,
+                                                coach, contest official, or
+                                                contributor/supporter.
                                             </p>
                                             <textarea
                                                 id="nominee-accomplishment-summary"
