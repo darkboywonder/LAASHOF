@@ -359,7 +359,7 @@ function again() {
                                                         required
                                                     />
                                                     <p class="text-sm leading-5 text-gray-500" >
-                                                        Please list all team members.
+                                                        Please list all team members. If there are extra fields please remove them.
                                                     </p>
                                                 </div>
                                                 <div
