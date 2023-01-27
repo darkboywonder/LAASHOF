@@ -69,12 +69,14 @@ defineProps({
                                     >
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500">
-                                            Your nomination is carefully being
-                                            considered for the next upcoming
-                                            class. Please look forward to a
-                                            future date when we will announce
-                                            our newly inducted class and provide
-                                            information for the reward ceremony.
+                                            Our Nominations Committee will
+                                            process it to verify it meets the
+                                            four qualifications for selection.
+                                            It will then be presented to the
+                                            Selections Committee, where it will
+                                            be considered for the 2023 induction
+                                            class, to be announced in mid-March
+                                            2023.
                                         </p>
                                         <p
                                             class="text-xs font-bold text-gray-600 mt-4"
