@@ -17,8 +17,8 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <span class="block text-amber-500">Nominate someone now!</span>
             </h2>
             <p class="mt-4 text-lg leading-6 text-white">
-                Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-                Malesuada adipiscing sagittis vel nulla nec.
+                The 2023 Hall of Fame nomination process is now open with a
+                submission deadline of February 28 at 11:59pm EST.
             </p>
             <p class="sm:space-x-4">
                 <Link

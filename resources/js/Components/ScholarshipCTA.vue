@@ -29,17 +29,16 @@ import { AcademicCapIcon } from '@heroicons/vue/24/outline';
                     We support future hall of famers!
                 </p>
                 <p class="mt-3 text-lg text-gray-300">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Purus in massa tempor nec feugiat.
+                    It is our goal to award five graduating student-athletes who
+                    will be attending an accredited college or university with a
+                    scholarship.
                 </p>
                 <div class="mt-8">
                     <div class="inline-flex rounded-md shadow">
                         <a
-                            href="#"
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-gray-50"
                         >
-                            Apply Today
+                            Opening in May
                         </a>
                     </div>
                 </div>

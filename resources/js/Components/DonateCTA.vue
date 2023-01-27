@@ -23,15 +23,14 @@ import { CurrencyDollarIcon } from '@heroicons/vue/24/outline';
                         Help make our legends shine!
                     </p>
                     <p class="mt-3 text-lg text-gray-300 max-w-[600px]">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Eget nunc lobortis mattis aliquam
-                        faucibus.
+                        As we gear up for our 2023 Induction Ceremony and Gala,
+                        we ask for your continued support in helping us to shine
+                        the spotlight on our hometown sports legends and in
+                        awarding college scholarships.
                     </p>
                     <div class="mt-8">
                         <div class="inline-flex rounded-md shadow">
                             <a
-                                href="#"
                                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-gray-50"
                             >
                                 Donate Today
