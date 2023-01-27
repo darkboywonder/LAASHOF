@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Label from '@/Components/Label.vue';
 import PageHeader from '@/Components/PageHeader.vue';
@@ -15,12 +15,14 @@ import { useYesNo } from '@/Composables/yesNo.js';
 import ErrorAlert from '@/Components/ErrorAlert.vue';
 import { usePage, useForm, Link } from '@inertiajs/inertia-vue3';
 import { MinusCircleIcon } from '@heroicons/vue/24/outline';
+import SuccessModal from '@/Components/SuccessModal.vue';
 
 const errors = computed(() => usePage().props.value.errors);
+const success = computed(() => usePage().props.value.flash.success);
 const levels = useLevels();
 const generalOptions = useYesNo();
 const states = useStates();
-
+const modalOpen = ref(false);
 const form = useForm({
     team: {
         name: '',
@@ -78,6 +80,10 @@ const form = useForm({
     },
 });
 
+watch(success, (recent, old) => {
+    modalOpen.value = true;
+});
+
 function submit() {
     Inertia.post(route('nominate.team.store'), form);
 }
@@ -89,10 +95,21 @@ function addPlayer() {
 function deletePlayer(index) {
     form.team.players.splice(index, 1);
 }
+
+function returnHome() {
+    modalOpen.value = false;
+    Inertia.get(route('home'));
+}
+
+function again() {
+    modalOpen.value = false;
+    Inertia.get(route('nominate.team.create'));
+}
 </script>
 
 <template>
     <AppLayout>
+        <SuccessModal :open="modalOpen" @home="returnHome" @again="again" />
         <PageHeader
             slug="Team Nomination Form"
             description="Nominate a team for the upcoming induction class."

@@ -28,6 +28,6 @@ class TeamNominationController extends Controller
         $nominator = Nominator::firstOrCreate(['email' => $request->input('nominator.email')], $request->input('nominator'));
         $teamNominee->nominator()->associate($nominator);
         //return to page
-        return redirect()->back();
+        return redirect()->back()->with('success', true);
     }
 }
