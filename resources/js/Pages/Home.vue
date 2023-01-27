@@ -96,7 +96,7 @@ defineComponent({
             </div>
         </div>
 
-        <div class="bg-white h-[400px] flex flex-col justify-center">
+        <!-- <div class="bg-white h-[400px] flex flex-col justify-center">
             <Carousel items-to-show="5.5" :wrap-around="true" :autoplay="3000">
                 <Slide v-for="slide in 22" :key="slide">
                     <div class="bg-gray-200 w-full h-[300px] mx-2">
@@ -108,7 +108,7 @@ defineComponent({
                     <Navigation />
                 </template>
             </Carousel>
-        </div>
+        </div> -->
 
         <SponsorCloud />
         <NominateCTA />
