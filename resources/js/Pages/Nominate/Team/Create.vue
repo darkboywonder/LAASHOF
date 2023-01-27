@@ -14,7 +14,7 @@ import { useStates } from '@/Composables/states.js';
 import { useYesNo } from '@/Composables/yesNo.js';
 import ErrorAlert from '@/Components/ErrorAlert.vue';
 import { usePage, useForm, Link } from '@inertiajs/inertia-vue3';
-import { MinusCircleIcon } from '@heroicons/vue/24/outline';
+import { XCircleIcon } from '@heroicons/vue/24/outline';
 import SuccessModal from '@/Components/SuccessModal.vue';
 
 const errors = computed(() => usePage().props.value.errors);
@@ -418,7 +418,7 @@ function again() {
                                                                 </div>
                                                             </div>
                                                             <div class="col-span-1 flex justify-end items-center">
-                                                                <MinusCircleIcon class="w-8 h-8 hover:cursor-pointer hover:text-red-800 text-red-600" @click="deletePlayer(index)" />
+                                                                <XCircleIcon class="w-8 h-8 hover:cursor-pointer hover:text-red-800 text-red-600" @click="deletePlayer(index)" />
                                                             </div>
                                                         </li>
                                                     </ul>
