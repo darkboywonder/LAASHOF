@@ -105,6 +105,26 @@ function submit() {
         <ErrorAlert />
         <form @submit.prevent="submit">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h3
+                    class="text-xl text-center font-medium leading-6 text-gray-900 mb-4"
+                >
+                    Qualifications
+                </h3>
+                <ol class="grid grid-cols-1 text-center">
+                    <li class="col-span-1 text-gray-600">
+                        Must at one time been a permanent resident of Lexington,
+                        Ky.
+                    </li>
+                    <li class="col-span-1 text-gray-600">
+                        Reached 28 years of age.
+                    </li>
+                    <li class="col-span-1 text-gray-600">
+                        Non-resident college athletes are not eligible.
+                    </li>
+                    <li class="col-span-1 text-gray-600">
+                        Nomination application submitted by the deadline date.
+                    </li>
+                </ol>
                 <div class="mt-10 sm:mt-0">
                     <div class="hidden sm:block" aria-hidden="true">
                         <div class="py-5">
