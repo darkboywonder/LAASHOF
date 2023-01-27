@@ -21,7 +21,9 @@ class TeamNominationController extends Controller
         // create TeamNominee
         $teamNominee = TeamNominee::create(Arr::except($request->input('team'), 'players'));
         // create TeamMembers
-        $request->collect('team.players')->each(function ($player) use ($teamNominee) {
+        $request->collect('team.players')->filter(function ($value, $key) {
+            return $value['name'] !== '' && $value['name'] !== null;
+        })->each(function ($player) use ($teamNominee) {
             $teamNominee->members()->create($player);
         });
         // create nominator
