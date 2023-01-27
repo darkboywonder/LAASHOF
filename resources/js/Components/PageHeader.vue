@@ -22,7 +22,7 @@ defineProps({
         class="relative flex justify-center mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
     >
         <FlatLogo
-            class="absolute w-64 h-64 sm:w-80 sm:h-80 fill-amber-200 top-0 mx-auto"
+            class="absolute w-64 h-64 sm:w-96 sm:h-96 fill-orange-100 top-0 mx-auto"
         />
         <div class="relative text-center">
             <p
@@ -31,7 +31,7 @@ defineProps({
                 {{ slug }}
             </p>
             <p class="mx-auto mt-5 max-w-xl text-xl text-gray-500">
-                {{ description }}
+                <slot></slot>
             </p>
         </div>
         <div class="absolute flex justify-center top-0 left-9 z-1"></div>

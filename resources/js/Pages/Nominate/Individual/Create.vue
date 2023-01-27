@@ -14,7 +14,7 @@ import { useGenders } from '@/Composables/genders.js';
 import { useStates } from '@/Composables/states.js';
 import { useYesNo } from '@/Composables/yesNo.js';
 import ErrorAlert from '@/Components/ErrorAlert.vue';
-import { usePage, useForm } from '@inertiajs/inertia-vue3';
+import { usePage, useForm, Link } from '@inertiajs/inertia-vue3';
 
 const errors = computed(() => usePage().props.value.errors);
 const categories = useCategories();
@@ -67,10 +67,24 @@ function submit() {
 
 <template>
     <AppLayout>
-        <PageHeader
-            slug="Individual Nomination Form"
-            description="Nominate an Individual for the upcoming induction class."
-        />
+        <PageHeader slug="Individual Nomination Form">
+            <p>Nominate an Individual for the upcoming induction class.</p>
+            <p>
+                Prefer to mail in your nomination?
+                <a
+                    href="/forms/individual_nomination_form.pdf"
+                    download="team_nomination_form"
+                    class="text-green-600 hover:text-green-700"
+                    >Download the form here.
+                </a>
+            </p>
+            <p>
+                See here for
+                <Link href="" class="text-green-600 hover:text-green-700"
+                    >rules.</Link
+                >
+            </p>
+        </PageHeader>
         <ErrorAlert />
         <form @submit.prevent="submit">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
