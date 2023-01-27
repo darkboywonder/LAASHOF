@@ -1,3 +1,111 @@
+<script setup>
+import {
+    Popover,
+    PopoverButton,
+    PopoverGroup,
+    PopoverPanel,
+} from '@headlessui/vue';
+import {
+    ArrowPathIcon,
+    Bars3Icon,
+    ChartBarIcon,
+    CursorArrowRaysIcon,
+    DocumentChartBarIcon,
+    ShieldCheckIcon,
+    Squares2X2Icon,
+    UserIcon,
+    UserGroupIcon,
+    XMarkIcon,
+} from '@heroicons/vue/24/outline';
+import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+import ColorLogo from '@/Components/ColorLogo.vue';
+import { Link } from '@inertiajs/inertia-vue3';
+
+const solutions = [
+    {
+        name: 'Analytics',
+        description:
+            'Get a better understanding of where your traffic is coming from.',
+        href: '#',
+        icon: ChartBarIcon,
+    },
+    {
+        name: 'Engagement',
+        description:
+            'Speak directly to your customers in a more meaningful way.',
+        href: '#',
+        icon: CursorArrowRaysIcon,
+    },
+    {
+        name: 'Security',
+        description: "Your customers' data will be safe and secure.",
+        href: '#',
+        icon: ShieldCheckIcon,
+    },
+    {
+        name: 'Integrations',
+        description:
+            "Connect with third-party tools that you're already using.",
+        href: '#',
+        icon: Squares2X2Icon,
+    },
+    {
+        name: 'Automations',
+        description:
+            'Build strategic funnels that will drive your customers to convert',
+        href: '#',
+        icon: ArrowPathIcon,
+    },
+    {
+        name: 'Reports',
+        description:
+            'Get detailed reports that will help you make more informed decisions ',
+        href: '#',
+        icon: DocumentChartBarIcon,
+    },
+];
+const resources = [
+    {
+        name: 'Help Center',
+        description:
+            'Get all of your questions answered in our forums or contact support.',
+        href: '#',
+    },
+    {
+        name: 'Guides',
+        description:
+            'Learn how to maximize our platform to get the most out of it.',
+        href: '#',
+    },
+    {
+        name: 'Events',
+        description:
+            'See what meet-ups and other events we might be planning near you.',
+        href: '#',
+    },
+    {
+        name: 'Security',
+        description: 'Understand how we take your privacy seriously.',
+        href: '#',
+    },
+];
+
+const nominationOptions = [
+    {
+        name: 'Individual',
+        description: 'Nominate an athlete, coach, official, or contributor.',
+        href: route('nominate.individual.create'),
+        icon: UserIcon,
+    },
+    {
+        name: 'team',
+        description: 'Nominate an outstanding local sports team.',
+        href: route('nominate.team.create'),
+        icon: UserGroupIcon,
+    },
+];
+</script>
+
 <template>
     <Popover class="relative bg-white">
         <div
@@ -164,6 +272,13 @@
                     </transition>
                 </Popover> -->
 
+                <Link
+                    :href="route('home')"
+                    class="text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                    Home
+                </Link>
+
                 <Popover class="relative" v-slot="{ open }">
                     <PopoverButton
                         :class="[
@@ -202,16 +317,29 @@
                                         v-for="option in nominationOptions"
                                         :key="option.name"
                                         :href="option.href"
-                                        class="-m-3 block rounded-md p-3 hover:bg-gray-50"
+                                        class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
                                     >
-                                        <p
-                                            class="text-base font-medium text-gray-900"
+                                        <div
+                                            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white sm:h-12 sm:w-12"
                                         >
-                                            {{ option.name }}
-                                        </p>
-                                        <p class="mt-1 text-sm text-gray-500">
-                                            {{ option.description }}
-                                        </p>
+                                            <component
+                                                :is="option.icon"
+                                                class="h-6 w-6"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <div class="ml-4">
+                                            <p
+                                                class="text-base font-medium text-gray-900"
+                                            >
+                                                {{ option.name }}
+                                            </p>
+                                            <p
+                                                class="mt-1 text-sm text-gray-500"
+                                            >
+                                                {{ option.description }}
+                                            </p>
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
@@ -224,11 +352,11 @@
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                     >Scholarship</a
                 > -->
-                <a
+                <!-- <a
                     :href="route('contact.create')"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                     >Contact</a
-                >
+                > -->
             </PopoverGroup>
             <div
                 class="hidden items-center justify-end md:flex md:flex-1 lg:w-0"
@@ -359,109 +487,3 @@
         </transition>
     </Popover>
 </template>
-
-<script setup>
-import {
-    Popover,
-    PopoverButton,
-    PopoverGroup,
-    PopoverPanel,
-} from '@headlessui/vue';
-import {
-    ArrowPathIcon,
-    Bars3Icon,
-    ChartBarIcon,
-    CursorArrowRaysIcon,
-    DocumentChartBarIcon,
-    ShieldCheckIcon,
-    Squares2X2Icon,
-    XMarkIcon,
-} from '@heroicons/vue/24/outline';
-import { ChevronDownIcon } from '@heroicons/vue/20/solid';
-import ColorLogo from '@/Components/ColorLogo.vue';
-import { Link } from '@inertiajs/inertia-vue3';
-
-const solutions = [
-    {
-        name: 'Analytics',
-        description:
-            'Get a better understanding of where your traffic is coming from.',
-        href: '#',
-        icon: ChartBarIcon,
-    },
-    {
-        name: 'Engagement',
-        description:
-            'Speak directly to your customers in a more meaningful way.',
-        href: '#',
-        icon: CursorArrowRaysIcon,
-    },
-    {
-        name: 'Security',
-        description: "Your customers' data will be safe and secure.",
-        href: '#',
-        icon: ShieldCheckIcon,
-    },
-    {
-        name: 'Integrations',
-        description:
-            "Connect with third-party tools that you're already using.",
-        href: '#',
-        icon: Squares2X2Icon,
-    },
-    {
-        name: 'Automations',
-        description:
-            'Build strategic funnels that will drive your customers to convert',
-        href: '#',
-        icon: ArrowPathIcon,
-    },
-    {
-        name: 'Reports',
-        description:
-            'Get detailed reports that will help you make more informed decisions ',
-        href: '#',
-        icon: DocumentChartBarIcon,
-    },
-];
-const resources = [
-    {
-        name: 'Help Center',
-        description:
-            'Get all of your questions answered in our forums or contact support.',
-        href: '#',
-    },
-    {
-        name: 'Guides',
-        description:
-            'Learn how to maximize our platform to get the most out of it.',
-        href: '#',
-    },
-    {
-        name: 'Events',
-        description:
-            'See what meet-ups and other events we might be planning near you.',
-        href: '#',
-    },
-    {
-        name: 'Security',
-        description: 'Understand how we take your privacy seriously.',
-        href: '#',
-    },
-];
-
-const nominationOptions = [
-    {
-        name: 'Individual',
-        description:
-            'Get all of your questions answered in our forums or contact support.',
-        href: route('nominate.individual.create'),
-    },
-    {
-        name: 'team',
-        description:
-            'Learn how to maximize our platform to get the most out of it.',
-        href: route('nominate.team.create'),
-    },
-];
-</script>
