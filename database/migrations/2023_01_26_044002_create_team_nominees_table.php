@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('sport');
             $table->string('year');
-            $table->string('coach');
+            $table->string('head_coach');
+            $table->string('assistant_coach');
+            $table->string('manager');
             $table->string('level');
             $table->text('accomplishment_summary');
             $table->timestamps();

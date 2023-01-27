@@ -26,7 +26,9 @@ const form = useForm({
         name: '',
         sport: '',
         year: '',
-        coach: '',
+        head_coach: '',
+        assistant_coach: '',
+        manager: '',
         accomplishment_summary: '',
         level: 'high-school',
         players: [
@@ -182,19 +184,55 @@ function deletePlayer(index) {
 
                                         <div class="col-span-6 sm:col-span-3">
                                             <Label
-                                                for="team_coach"
+                                                for="team_head_coach"
                                                 value="Head Coach"
                                                 required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
                                             <TextInput
-                                                name="team_coach"
-                                                id="team_coach"
+                                                name="team_head_coach"
+                                                id="team_head_coach"
                                                 :disabled="form.processing"
-                                                autocomplete="team_coach"
-                                                v-model="form.team.coach"
-                                                :error="errors['team.coach']"
+                                                autocomplete="team_head_coach"
+                                                v-model="form.team.head_coach"
+                                                :error="errors['team.head_coach']"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <Label
+                                                for="team_assistant_coach"
+                                                value="Assistant Coach"
+                                                required
+                                            />
+
+                                            <!-- prettier-ignore-attribute -->
+                                            <TextInput
+                                                name="team_assistant_coach"
+                                                id="team_assistant_coach"
+                                                :disabled="form.processing"
+                                                autocomplete="team_assistant_coach"
+                                                v-model="form.team.assistant_coach"
+                                                :error="errors['team.assistant_coach']"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <Label
+                                                for="team_manager"
+                                                value="Manager"
+                                                required
+                                            />
+
+                                            <!-- prettier-ignore-attribute -->
+                                            <TextInput
+                                                name="team_manager"
+                                                id="team_manager"
+                                                :disabled="form.processing"
+                                                autocomplete="team_manager"
+                                                v-model="form.team.manager"
+                                                :error="errors['team.manager']"
                                                 required
                                             />
                                         </div>
