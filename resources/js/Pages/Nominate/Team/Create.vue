@@ -106,6 +106,54 @@ function deletePlayer(index) {
                     </div>
                 </div>
 
+                <div class="mt-10 sm:mt-0">
+                    <div class="md:grid md:grid-cols-3 md:gap-6">
+                        <div class="md:col-span-1">
+                            <div class="px-4 sm:px-0">
+                                <h3
+                                    class="text-lg font-medium leading-6 text-gray-900"
+                                >
+                                    Nomination Category
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Please select a category for the team.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-5 md:col-span-2 md:mt-0">
+                            <div class="overflow-hidden shadow sm:rounded-md">
+                                <div
+                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
+                                >
+                                    <fieldset>
+                                        <legend class="sr-only">Levels</legend>
+
+                                        <Label
+                                            for="level"
+                                            value="Type"
+                                            required
+                                        />
+
+                                        <RadioCardGroupInput
+                                            :message="`Select a type`"
+                                            :options="levels"
+                                            :disabled="form.processing"
+                                            v-model="form.team.level"
+                                            required
+                                        />
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden sm:block" aria-hidden="true">
+                    <div class="py-5">
+                        <div class="border-t border-gray-200" />
+                    </div>
+                </div>
+
                 <div>
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
@@ -363,7 +411,7 @@ function deletePlayer(index) {
                                 <h3
                                     class="text-lg font-medium leading-6 text-gray-900"
                                 >
-                                    Nominator Information
+                                    Your Information
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
                                     Please provide information for the person
@@ -535,54 +583,6 @@ function deletePlayer(index) {
                                             />
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hidden sm:block" aria-hidden="true">
-                    <div class="py-5">
-                        <div class="border-t border-gray-200" />
-                    </div>
-                </div>
-
-                <div class="mt-10 sm:mt-0">
-                    <div class="md:grid md:grid-cols-3 md:gap-6">
-                        <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                                <h3
-                                    class="text-lg font-medium leading-6 text-gray-900"
-                                >
-                                    Nomination Category
-                                </h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Please select a category for the nominee.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:col-span-2 md:mt-0">
-                            <div class="overflow-hidden shadow sm:rounded-md">
-                                <div
-                                    class="space-y-6 bg-white px-4 py-5 sm:p-6"
-                                >
-                                    <fieldset>
-                                        <legend class="sr-only">Levels</legend>
-
-                                        <Label
-                                            for="level"
-                                            value="Type"
-                                            required
-                                        />
-
-                                        <RadioCardGroupInput
-                                            :message="`Select a type`"
-                                            :options="levels"
-                                            :disabled="form.processing"
-                                            v-model="form.team.level"
-                                            required
-                                        />
-                                    </fieldset>
                                 </div>
                             </div>
                         </div>
