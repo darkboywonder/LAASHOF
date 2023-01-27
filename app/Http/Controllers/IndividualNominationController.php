@@ -29,6 +29,6 @@ class IndividualNominationController extends Controller
             $nominee->relative()->create($request->input('relative'));
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', true);
     }
 }

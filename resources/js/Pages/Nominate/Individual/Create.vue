@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Label from '@/Components/Label.vue';
 import PageHeader from '@/Components/PageHeader.vue';
@@ -15,13 +15,15 @@ import { useStates } from '@/Composables/states.js';
 import { useYesNo } from '@/Composables/yesNo.js';
 import ErrorAlert from '@/Components/ErrorAlert.vue';
 import { usePage, useForm, Link } from '@inertiajs/inertia-vue3';
+import SuccessModal from '@/Components/SuccessModal.vue';
 
 const errors = computed(() => usePage().props.value.errors);
+const success = computed(() => usePage().props.value.flash.success);
 const categories = useCategories();
 const generalOptions = useYesNo();
 const genderOptions = useGenders();
 const states = useStates();
-
+const modalOpen = ref(false);
 const form = useForm({
     nominee: {
         first_name: '',
@@ -60,6 +62,20 @@ const form = useForm({
     },
 });
 
+watch(success, (recent, old) => {
+    modalOpen.value = true;
+});
+
+function returnHome() {
+    modalOpen.value = false;
+    Inertia.get(route('home'));
+}
+
+function again() {
+    modalOpen.value = false;
+    Inertia.get(route('nominate.individual.create'));
+}
+
 function submit() {
     Inertia.post(route('nominate.individual.store'), form);
 }
@@ -67,6 +83,7 @@ function submit() {
 
 <template>
     <AppLayout>
+        <SuccessModal :open="modalOpen" @home="returnHome" @again="again" />
         <PageHeader slug="Individual Nomination Form">
             <p>Nominate an Individual for the upcoming induction class.</p>
             <p>
