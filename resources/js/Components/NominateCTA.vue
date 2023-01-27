@@ -28,7 +28,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                     Individual
                 </Link>
                 <a
-                    href="#"
+                    :href="route('nominate.team.create')"
                     class="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-red-50 sm:w-auto"
                     >Sports Team</a
                 >
