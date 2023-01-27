@@ -7,6 +7,7 @@ use App\Models\Nominator;
 use App\Models\TeamNominee;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTeamNomineeRequest;
 
 class TeamNominationController extends Controller
 {
@@ -16,7 +17,7 @@ class TeamNominationController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreTeamNomineeRequest $request)
     {
         // create TeamNominee
         $teamNominee = TeamNominee::create(Arr::except($request->input('team'), 'players'));
