@@ -8,9 +8,5 @@ export function useGenders() {
             id: 'female',
             title: 'Female',
         },
-        {
-            id: 'x',
-            title: 'Non-binary',
-        },
     ];
 }
