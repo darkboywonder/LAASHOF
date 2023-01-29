@@ -8,6 +8,7 @@ import NominateCTA from '@/Components/NominateCTA.vue';
 import DonateCTA from '@/Components/DonateCTA.vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import ConstructionBanner from '@/ConstructionBanner.vue';
 
 const carouselSettings = {
     itemsToShow: 1,
@@ -39,6 +40,7 @@ defineComponent({
 
 <template>
     <AppLayout>
+        <ConstructionBanner />
         <div class="grid grid-cols-7">
             <!-- <div class="isolate bg-white">
                 <div
