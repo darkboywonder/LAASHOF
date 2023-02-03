@@ -24,9 +24,9 @@ class StoreTeamNomineeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'sport' => 'required|string',
-            'year' => 'required|string',
+            'team.name' => 'required|string',
+            'team.sport' => 'required|string',
+            'team.year' => 'required|string',
             'nominator.first_name' => 'required|string',
             'nominator.last_name' => 'required|string',
             'nominator.phone' => 'required|string',
