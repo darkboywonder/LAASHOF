@@ -242,7 +242,6 @@ function submit() {
                                             <Label
                                                 for="nominee_birthday"
                                                 value="Birthday"
-                                                required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
@@ -254,7 +253,6 @@ function submit() {
                                                 autocomplete="nominee_birthday"
                                                 v-model="form.nominee.birthday"
                                                 :error="errors['nominee.birthday']"
-                                                required
                                             />
                                         </div>
 
@@ -297,7 +295,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_email"
                                                     value="Email Address"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -308,7 +305,6 @@ function submit() {
                                                     autocomplete="nominee_email"
                                                     v-model="form.nominee.email"
                                                     :error="errors['nominee.email']"
-                                                    required
                                                 />
                                             </div>
 
@@ -319,7 +315,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_phone"
                                                     value="Phone Number"
-                                                    required
                                                 />
                                                 <!-- prettier-ignore-attribute -->
                                                 <TextInput
@@ -330,7 +325,6 @@ function submit() {
                                                     autocomplete="nominee_phone"
                                                     v-model="form.nominee.phone"
                                                     :error=" errors['nominee.phone']"
-                                                    required
                                                 />
                                             </div>
 
@@ -338,7 +332,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_address"
                                                     value="Street Address"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -349,7 +342,6 @@ function submit() {
                                                     autocomplete="nominee_address"
                                                     v-model="form.nominee.address"
                                                     :error="errors['nominee.address']"
-                                                    required
                                                 />
                                             </div>
 
@@ -360,7 +352,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_city"
                                                     value="City"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -371,7 +362,6 @@ function submit() {
                                                     autocomplete="nominee_city"
                                                     v-model="form.nominee.city"
                                                     :error=" errors['nominee.city']"
-                                                    required
                                                 />
                                             </div>
 
@@ -382,7 +372,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_state"
                                                     value="State / Territory"
-                                                    required
                                                 />
                                                 <!-- prettier-ignore-attribute -->
                                                 <SelectInput
@@ -393,7 +382,6 @@ function submit() {
                                                     :options="states"
                                                     v-model="form.nominee.state"
                                                     :error="errors['nominee.state']"
-                                                    required
                                                 />
                                             </div>
 
@@ -404,7 +392,6 @@ function submit() {
                                                 <Label
                                                     for="nominee_zip"
                                                     value="Zip / Postal code"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -415,7 +402,6 @@ function submit() {
                                                     autocomplete="nominee_zip"
                                                     v-model="form.nominee.zip"
                                                     :error="errors['nominee.zip']"
-                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -479,7 +465,6 @@ function submit() {
                                                 <Label
                                                     for="relative_email"
                                                     value="Relative Email Address"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -490,7 +475,6 @@ function submit() {
                                                     autocomplete="relative_email"
                                                     v-model=" form.relative.email"
                                                     :error="errors['nominee.relative.email']"
-                                                    required
                                                 />
                                             </div>
 
@@ -511,7 +495,6 @@ function submit() {
                                                     autocomplete="relative_nominee_phone"
                                                     v-model="form.relative.phone"
                                                     :error="errors['nominee.relative.phone']"
-                                                    required
                                                 />
                                             </div>
 
@@ -519,7 +502,6 @@ function submit() {
                                                 <Label
                                                     for="relative_address"
                                                     value="Relative Street Address"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -530,7 +512,6 @@ function submit() {
                                                     autocomplete="relative_address"
                                                     v-model="form.relative.address"
                                                     :error="errors['nominee.relative.address']"
-                                                    required
                                                 />
                                             </div>
 
@@ -539,7 +520,6 @@ function submit() {
                                                 <Label
                                                     for="relative_city"
                                                     value="Relative City"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -550,7 +530,6 @@ function submit() {
                                                     autocomplete="relative_city"
                                                     v-model="form.relative.city"
                                                     :error="errors['nominee.relative.city']"
-                                                    required
                                                 />
                                             </div>
 
@@ -559,7 +538,6 @@ function submit() {
                                                 <Label
                                                     for="relative_state"
                                                     value=" Relative State / Territory"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -571,7 +549,6 @@ function submit() {
                                                     :options="states"
                                                     v-model="form.relative.state"
                                                     :error="errors['nominee.relative.state']"
-                                                    required
                                                 />
                                             </div>
 
@@ -580,7 +557,6 @@ function submit() {
                                                 <Label
                                                     for="relative_zip"
                                                     value="Relative Zip / Postal code"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
@@ -591,7 +567,6 @@ function submit() {
                                                     autocomplete="relative_zip"
                                                     v-model="form.relative.zip"
                                                     :error="errors['nominee.relative.zip']"
-                                                    required
                                                 />
                                             </div>
                                         </div>

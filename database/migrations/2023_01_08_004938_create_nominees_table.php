@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('nominator_id')->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('birthday');
+            $table->string('birthday')->nullable();
             $table->string('gender');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
