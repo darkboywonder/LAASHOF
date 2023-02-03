@@ -483,7 +483,6 @@ function submit() {
                                                 <Label
                                                     for="relative_nominee_phone"
                                                     value="Relative Phone Number"
-                                                    required
                                                 />
 
                                                 <!-- prettier-ignore-attribute -->
