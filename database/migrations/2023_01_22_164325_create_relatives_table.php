@@ -18,12 +18,12 @@ return new class extends Migration
             $table->unsignedBigInteger('nominee_id')->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->timestamps();
         });
     }

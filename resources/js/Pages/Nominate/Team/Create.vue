@@ -268,7 +268,6 @@ function again() {
                                             <Label
                                                 for="team_head_coach"
                                                 value="Head Coach"
-                                                required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
@@ -279,14 +278,12 @@ function again() {
                                                 autocomplete="team_head_coach"
                                                 v-model="form.team.head_coach"
                                                 :error="errors['team.head_coach']"
-                                                required
                                             />
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
                                             <Label
                                                 for="team_assistant_coach"
                                                 value="Assistant Coach"
-                                                required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
@@ -297,14 +294,12 @@ function again() {
                                                 autocomplete="team_assistant_coach"
                                                 v-model="form.team.assistant_coach"
                                                 :error="errors['team.assistant_coach']"
-                                                required
                                             />
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
                                             <Label
                                                 for="team_manager"
                                                 value="Manager"
-                                                required
                                             />
 
                                             <!-- prettier-ignore-attribute -->
@@ -315,7 +310,6 @@ function again() {
                                                 autocomplete="team_manager"
                                                 v-model="form.team.manager"
                                                 :error="errors['team.manager']"
-                                                required
                                             />
                                         </div>
                                     </div>
