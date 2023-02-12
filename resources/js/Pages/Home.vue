@@ -9,6 +9,7 @@ import DonateCTA from '@/Components/DonateCTA.vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import ConstructionBanner from '@/ConstructionBanner.vue';
+import WordedLogoAlt from '@/Components/WordedLogoAlt.vue';
 
 const carouselSettings = {
     itemsToShow: 1,
@@ -41,7 +42,30 @@ defineComponent({
 <template>
     <AppLayout>
         <ConstructionBanner />
-        <div class="grid grid-cols-7">
+        <div class="relative grid grid-cols-7">
+            <div class="absolute top-0 left-0 z-0">
+                <!--prettier-ignore-->
+                <img
+                    class="relative cover z-[1]"
+                    srcset="
+                        /images/laashof_collage383x164.jpg 383w,
+                        /images/laashof_collage769x331.jpg 769w,
+                        /images/laashof_collage1273x546.jpg 1273w,
+                        /images/laashof_collage2544x1091.jpg 2544w
+                    "
+                    sizes="
+                        (max-width: 480px) 383w,
+                        (max-width: 768px) 769w,
+                        (max-width: 1024px) 1273w,
+                        2544w
+                    "
+                    src="/images/laashof_collage1273x546.jpg"
+                    alt="collage of hall of famers"
+                />
+                <div
+                    class="absolute top-0 left-0 inset-0 bg-gray-500 bg-opacity-75 z-[2] min-h-full min-w-fit"
+                ></div>
+            </div>
             <!-- <div class="isolate bg-white">
                 <div
                     class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -73,8 +97,8 @@ defineComponent({
                     </svg>
                 </div>
             </div> -->
-            <div class="col-start-3 col-span-3">
-                <WordedLogo />
+            <div class="col-start-3 col-span-3 z-[3]">
+                <WordedLogoAlt />
             </div>
         </div>
 
