@@ -107,7 +107,7 @@ const nominationOptions = [
 </script>
 
 <template>
-    <Popover class="relative bg-white">
+    <Popover class="relative bg-white z-20">
         <div
             class="flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10"
         >
@@ -279,7 +279,7 @@ const nominationOptions = [
                     Home
                 </Link>
 
-                <Popover class="relative" v-slot="{ open }">
+                <Popover class="relative z-20" v-slot="{ open }">
                     <PopoverButton
                         :class="[
                             open ? 'text-gray-900' : 'text-gray-500',
@@ -392,11 +392,10 @@ const nominationOptions = [
                     <div class="px-5 pt-5 pb-6">
                         <div class="flex items-center justify-between">
                             <div>
-                                <img
-                                    class="h-8 w-auto"
-                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                    alt="Your Company"
-                                />
+                                <Link :href="route('home')">
+                                    <ColorLogo class="h-10 w-auto sm:h-10" />
+                                    <span class="sr-only">LAASHOF</span>
+                                </Link>
                             </div>
                             <div class="-mr-2">
                                 <PopoverButton
@@ -412,32 +411,37 @@ const nominationOptions = [
                         </div>
                         <div class="mt-6">
                             <nav class="grid grid-cols-1 gap-7">
-                                <a
-                                    v-for="solution in solutions"
-                                    :key="solution.name"
-                                    :href="solution.href"
-                                    class="-m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
+                                <Link
+                                    v-for="option in nominationOptions"
+                                    :key="option.name"
+                                    :href="option.href"
+                                    class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
                                 >
                                     <div
                                         class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
                                     >
                                         <component
-                                            :is="solution.icon"
+                                            :is="option.icon"
                                             class="h-6 w-6"
                                             aria-hidden="true"
                                         />
                                     </div>
-                                    <div
-                                        class="ml-4 text-base font-medium text-gray-900"
-                                    >
-                                        {{ solution.name }}
+                                    <div class="ml-4">
+                                        <p
+                                            class="text-base font-medium text-gray-900"
+                                        >
+                                            Nominate {{ option.name }}
+                                        </p>
+                                        <p class="mt-1 text-sm text-gray-500">
+                                            {{ option.description }}
+                                        </p>
                                     </div>
-                                </a>
+                                </Link>
                             </nav>
                         </div>
                     </div>
                     <div class="py-6 px-5">
-                        <div class="grid grid-cols-2 gap-4">
+                        <!-- <div class="grid grid-cols-2 gap-4">
                             <a
                                 href="#"
                                 class="text-base font-medium text-gray-900 hover:text-gray-700"
@@ -462,7 +466,7 @@ const nominationOptions = [
                                 class="text-base font-medium text-gray-900 hover:text-gray-700"
                                 >{{ resource.name }}</a
                             >
-                        </div>
+                        </div> -->
                         <div class="mt-6">
                             <a
                                 href="#"
@@ -472,7 +476,7 @@ const nominationOptions = [
                             <p
                                 class="mt-6 text-center text-base font-medium text-gray-500"
                             >
-                                Existing customer?
+                                Existing member?
                                 {{ ' ' }}
                                 <a
                                     href="#"
