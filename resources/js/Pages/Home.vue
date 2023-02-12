@@ -1,7 +1,6 @@
 <script setup>
 import { defineComponent } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import WordedLogo from '@/Components/WordedLogo.vue';
 import SponsorCloud from '@/Components/SponsorCloud.vue';
 import ScholarshipCTA from '@/Components/ScholarshipCTA.vue';
 import NominateCTA from '@/Components/NominateCTA.vue';
