@@ -1,21 +1,41 @@
+<script setup>
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+import { WrenchScrewdriverIcon } from '@heroicons/vue/24/outline';
+</script>
+
 <template>
     <div class="relative bg-amber-600">
         <div class="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
-            <div class="pr-16 sm:px-16 sm:text-center">
-                <p class="text-white font-bold">WEBSITE UNDER CONSTRUCTION!</p>
-                <p class="text-white">
-                    While our website is being updated, only the Nomination
-                    forms are available.
-                </p>
-                <p class="text-white">
-                    To make a nomination, please click on the Nominations links
-                    below and follow the directions on the screen.
-                </p>
-            </div>
+            <Disclosure
+                as="div"
+                v-slot="{ open }"
+                class="sm:text-center flex flex-col items-center"
+            >
+                <div class="flex justify-center items-center space-x-2">
+                    <WrenchScrewdriverIcon class="text-white w-5 h-5" />
+                    <span class="text-white text-sm font-bold"
+                        >WEBSITE UNDER CONSTRUCTION!</span
+                    >
+                </div>
+                <DisclosureButton class="flex justify-center items-center">
+                    <span class="text-white">more info</span>
+                    <ChevronDownIcon
+                        class="text-white w-6 h-6"
+                        :class="open && 'rotate-180 transform'"
+                    />
+                </DisclosureButton>
+                <DisclosurePanel>
+                    <p class="text-white">
+                        While our website is being updated, only the Nomination
+                        forms are available.
+                    </p>
+                    <p class="text-white">
+                        To make a nomination, please click on the Nominations
+                        links below and follow the directions on the screen.
+                    </p>
+                </DisclosurePanel>
+            </Disclosure>
         </div>
     </div>
 </template>
-
-<script setup>
-import { XMarkIcon } from '@heroicons/vue/24/outline';
-</script>
