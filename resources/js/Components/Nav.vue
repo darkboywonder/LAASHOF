@@ -98,7 +98,7 @@ const nominationOptions = [
         icon: UserIcon,
     },
     {
-        name: 'team',
+        name: 'Team',
         description: 'Nominate an outstanding local sports team.',
         href: route('nominate.team.create'),
         icon: UserGroupIcon,
