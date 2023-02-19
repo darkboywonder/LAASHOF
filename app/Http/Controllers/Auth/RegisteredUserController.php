@@ -42,11 +42,11 @@ class RegisteredUserController extends Controller
             'state' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'zip' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:'.User::class,
+            'email' => 'required|string|email|max:255',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create(array_merge($validated, [
+        $user = User::firstOrCreate(['email' => $validated['email']], array_merge($validated, [
             'password' => Hash::make($request->password),
         ]));
 
