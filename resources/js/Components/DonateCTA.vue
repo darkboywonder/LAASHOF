@@ -1,5 +1,29 @@
 <script setup>
 import { CurrencyDollarIcon } from '@heroicons/vue/24/outline';
+import { onMounted } from 'vue';
+
+function loadAsync(url, callback) {
+    let script = document.createElement('script');
+    script.setAttribute('src', url);
+    script.onload = callback;
+    document
+        .querySelector('#donate-button-container')
+        .insertAdjacentElement('beforeend', script);
+}
+
+onMounted(function () {
+    loadAsync('https://www.paypalobjects.com/donate/sdk/donate-sdk.js', () => {
+        PayPal.Donation.Button({
+            env: 'production',
+            hosted_button_id: 'YHDQSBNK7TSKS',
+            image: {
+                src: 'https://pics.paypal.com/00/s/MmZhZTYwMmUtNGI2NC00NTVkLThlMDgtMThiNjExYjAwMjUx/file.PNG',
+                alt: 'Donate with PayPal button',
+                title: 'PayPal - The safer, easier way to pay online!',
+            },
+        }).render('#donate-button');
+    });
+});
 </script>
 
 <template>
@@ -29,12 +53,11 @@ import { CurrencyDollarIcon } from '@heroicons/vue/24/outline';
                         awarding college scholarships.
                     </p>
                     <div class="mt-8">
-                        <div class="inline-flex rounded-md shadow">
-                            <a
-                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-gray-50"
-                            >
-                                Donate Today
-                            </a>
+                        <div id="donate-button-container">
+                            <div
+                                id="donate-button"
+                                class="inline-flex w-[145.183px]"
+                            ></div>
                         </div>
                     </div>
                 </div>

@@ -278,6 +278,12 @@ const nominationOptions = [
                 >
                     Home
                 </Link>
+                <a
+                    href="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
+                    class="text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                    Donate
+                </a>
 
                 <Popover class="relative z-20" v-slot="{ open }">
                     <PopoverButton
