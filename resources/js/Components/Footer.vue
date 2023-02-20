@@ -224,7 +224,7 @@ const navigation = {
         },
         {
             name: 'LinkedIn',
-            href: '#',
+            href: 'https://www.linkedin.com/in/laashofinc/',
             icon: defineComponent({
                 render: () =>
                     h('svg', { fill: 'currentColor', viewBox: '0 0 256 256' }, [
