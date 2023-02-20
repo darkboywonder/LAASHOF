@@ -27,12 +27,13 @@ import { WrenchScrewdriverIcon } from '@heroicons/vue/24/outline';
                 </DisclosureButton>
                 <DisclosurePanel>
                     <p class="text-white">
-                        While our website is being updated, only the Nomination
-                        forms are available.
+                        While our website is updating, the donation and
+                        nomination forms are available.
                     </p>
                     <p class="text-white">
-                        To make a nomination, please click on the Nominations
-                        links below and follow the directions on the screen.
+                        To make a donation or nomination, please click on either
+                        the donation link or nominations links below and follow
+                        the directions on the screen.
                     </p>
                 </DisclosurePanel>
             </Disclosure>
