@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Inertia\Inertia;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\RegisterUserRequest;
 
 class RegisteredUserController extends Controller
 {
@@ -32,23 +34,14 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterUserRequest $request)
     {
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'zip' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
 
-        $user = User::create(array_merge($validated, [
+        DB::table('users')->updateOrInsert(['email' => $request->email], array_merge($request->validated(), [
             'password' => Hash::make($request->password),
         ]));
+
+        $user = User::firstWhere('email', $request->email);
 
         event(new Registered($user));
 
