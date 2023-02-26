@@ -4,27 +4,30 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Relative extends Resource
+class TeamNominee extends Resource
 {
-    public static $displayInNavigation = false;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Relative>
+     * @var class-string<\App\Models\TeamNominee>
      */
-    public static $model = \App\Models\Relative::class;
+    public static $model = \App\Models\TeamNominee::class;
+
+    public static $group = 'Hall';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -32,8 +35,9 @@ class Relative extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email',
+        'id', 'name', 'sport', 'head_coach', 'assistant_coach', 'manager',
     ];
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -45,36 +49,20 @@ class Relative extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('First Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Last Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Phone')
-                ->sortable(),
-
-            Email::make()
-                ->sortable()
-                ->rules('email', 'max:254'),
-
-            Text::make('Address')
-                ->sortable()
-                ->rules('max:255'),
-
-            Text::make('City')
-                ->sortable()
-                ->rules('max:255'),
-
-            Text::make('State')
-                ->sortable()
-                ->rules('max:255'),
-
-            Text::make('Zip')
-                ->sortable()
-                ->rules('max:255'),
+            Text::make('Name')->rules('required', 'max:255'),
+            Text::make('Sport')->rules('required', 'max:255'),
+            Text::make('Head Coach')->rules('max:255'),
+            Text::make('Assistant Coach')->rules('max:255'),
+            Text::make('Manager')->rules('max:255'),
+            Select::make('Level')->options([
+                'high-school' => 'High School',
+                'recreational' => 'Recreational',
+                'semi-pro' => 'Semi-pro',
+                'other' => 'Other'
+            ])->displayUsingLabels()->rules('required', 'max:255'),
+            Textarea::make('Accomplishment Summary'),
+            HasMany::make('Team Members', 'members'),
+            HasOne::make('Nominator')->hideWhenUpdating()->nullable(),
         ];
     }
 

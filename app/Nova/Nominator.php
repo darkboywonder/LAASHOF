@@ -10,6 +10,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Nominator extends Resource
 {
+    public static $displayInNavigation = false;
+
     /**
      * The model the resource corresponds to.
      *
@@ -30,7 +32,7 @@ class Nominator extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'first_name', 'last_name', 'email',
     ];
 
     /**
@@ -44,8 +46,6 @@ class Nominator extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
-
             Text::make('First Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -54,11 +54,31 @@ class Nominator extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
+                Text::make('Phone')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Text::make('Address')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('City')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('State')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Zip')
+                ->sortable()
+                ->rules('required', 'max:255'),
         ];
     }
 

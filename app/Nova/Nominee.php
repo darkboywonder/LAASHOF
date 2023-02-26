@@ -2,18 +2,33 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\HasOne;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Nominee extends Resource
 {
+
+    /**
+     * Get the displayable label of the resource.
+     *
+     * @return string
+     * @overrides
+     */
+    public static function label()
+    {
+        return 'Individual Nominees';
+    }
+
+    public static $group = 'Hall';
+
     /**
      * The model the resource corresponds to.
      *
@@ -34,7 +49,7 @@ class Nominee extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'first_name', 'last_name', 'phone',
     ];
 
     /**
@@ -53,14 +68,19 @@ class Nominee extends Resource
             Text::make('Gender'),
             Text::make('Phone'),
             Text::make('Address'),
-            Text::make('Ctiy'),
+            Text::make('City'),
             Text::make('State'),
             Text::make('Zip'),
-            Text::make('Category'),
+            Select::make('Category')->options([
+                'athlete' => 'athlete',
+                'coach' => 'coach',
+                'offical' => 'offical',
+                'contributor' => 'contributor'
+            ]),
             Boolean::make('deceased'),
             Textarea::make('Accomplishment Summary'),
-            HasOne::make('Nominator'),
-            BelongsTo::make('Relative'),
+            HasOne::make('Nominator')->hideWhenUpdating(),
+            HasOne::make('Relative')->hideWhenUpdating(),
         ];
     }
 

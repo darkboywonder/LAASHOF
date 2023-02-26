@@ -2,16 +2,20 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\Select;
+use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
+
     /**
      * The model the resource corresponds to.
      *
@@ -24,7 +28,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'first_name';
 
     /**
      * The columns that should be searched.
@@ -32,7 +36,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id', 'first_name', 'last_name', 'email',
     ];
 
     /**
@@ -46,22 +50,52 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Name')
+            Select::make('Type')->options([
+                'nominator' => 'nominator',
+                'admin' => 'administrator',
+            ])
+                ->displayUsingLabels()
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Email')
+            Text::make('First Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Last Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Phone')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Email::make()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
+            Text::make('Address')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('City')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('State')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Zip')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
             Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+                ->onlyOnForms(),
+
+            HasMany::make('Nominees'),
         ];
     }
 
