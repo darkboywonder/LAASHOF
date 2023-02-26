@@ -39,7 +39,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
         <ErrorAlert />
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="mt-4">
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <Label for="first_name" value="First Name" required />
@@ -170,6 +170,7 @@ const submit = () => {
                     <TextInput
                         name="password"
                         id="password"
+                        type="password"
                         :disabled="form.processing"
                         autocomplete="password"
                         v-model="form.password"
@@ -189,6 +190,7 @@ const submit = () => {
                     <TextInput
                         name="password_confirmation"
                         id="password_confirmation"
+                        type="password"
                         :disabled="form.processing"
                         autocomplete="password_confirmation"
                         v-model="form.password_confirmation"
