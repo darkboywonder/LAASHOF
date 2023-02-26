@@ -21,6 +21,7 @@ import {
     UserIcon,
     UserGroupIcon,
     XMarkIcon,
+    CurrencyDollarIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { UserCircleIcon } from '@heroicons/vue/24/solid';
@@ -99,18 +100,30 @@ const resources = [
 ];
 const nominationOptions = [
     {
-        name: 'Individual',
+        name: 'Nominate Individual',
         description: 'Nominate an athlete, coach, official, or contributor.',
         href: route('nominate.individual.create'),
         icon: UserIcon,
     },
     {
-        name: 'team',
+        name: 'Nominate Team',
         description: 'Nominate an outstanding local sports team.',
         href: route('nominate.team.create'),
         icon: UserGroupIcon,
     },
 ];
+
+const navOptions = [
+    {
+        name: 'Donate',
+        description: 'Donate to help our legends shine.',
+        href: 'https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS',
+        icon: CurrencyDollarIcon,
+        external: true,
+    },
+];
+
+const mobileNavOptions = [...navOptions, ...nominationOptions];
 
 function logout() {
     Inertia.post(route('logout'));
@@ -289,6 +302,12 @@ function logout() {
                 >
                     Home
                 </Link>
+                <a
+                    href="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
+                    class="text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                    Donate
+                </a>
 
                 <Popover class="relative z-20" v-slot="{ open }">
                     <PopoverButton
@@ -467,32 +486,68 @@ function logout() {
                         </div>
                         <div class="mt-6">
                             <nav class="grid grid-cols-1 gap-7">
-                                <Link
-                                    v-for="option in nominationOptions"
+                                <li
+                                    v-for="option in mobileNavOptions"
                                     :key="option.name"
-                                    :href="option.href"
-                                    class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-100"
+                                    class="list-none"
                                 >
-                                    <div
-                                        class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
-                                    >
-                                        <component
-                                            :is="option.icon"
-                                            class="h-6 w-6"
-                                            aria-hidden="true"
-                                        />
-                                    </div>
-                                    <div class="ml-4">
-                                        <p
-                                            class="text-base font-medium text-gray-900"
+                                    <template v-if="option?.external">
+                                        <a
+                                            :href="option.href"
+                                            class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
                                         >
-                                            Nominate {{ option.name }}
-                                        </p>
-                                        <p class="mt-1 text-sm text-gray-500">
-                                            {{ option.description }}
-                                        </p>
-                                    </div>
-                                </Link>
+                                            <div
+                                                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
+                                            >
+                                                <component
+                                                    :is="option.icon"
+                                                    class="h-6 w-6"
+                                                    aria-hidden="true"
+                                                />
+                                            </div>
+                                            <div class="ml-4">
+                                                <p
+                                                    class="text-base font-medium text-gray-900"
+                                                >
+                                                    {{ option.name }}
+                                                </p>
+                                                <p
+                                                    class="mt-1 text-sm text-gray-500"
+                                                >
+                                                    {{ option.description }}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </template>
+                                    <template v-else>
+                                        <Link
+                                            :href="option.href"
+                                            class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-100"
+                                        >
+                                            <div
+                                                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
+                                            >
+                                                <component
+                                                    :is="option.icon"
+                                                    class="h-6 w-6"
+                                                    aria-hidden="true"
+                                                />
+                                            </div>
+                                            <div class="ml-4">
+                                                <p
+                                                    class="text-base font-medium text-gray-900"
+                                                >
+                                                    {{ option.name }}
+                                                </p>
+                                                <p
+                                                    class="mt-1 text-sm text-gray-500"
+                                                >
+                                                    {{ option.description }}
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    </template>
+                                </li>
                             </nav>
                         </div>
                     </div>
