@@ -35,5 +35,7 @@ class User extends Authenticatable
 
     protected $childTypes = [
         'nominator' => Nominator::class,
+        'admin' => Administrator::class,
+        'member' => Member::class,
     ];
 }

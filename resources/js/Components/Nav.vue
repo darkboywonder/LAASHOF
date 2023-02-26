@@ -1,9 +1,14 @@
 <script setup>
+import { computed } from 'vue';
 import {
     Popover,
     PopoverButton,
     PopoverGroup,
     PopoverPanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
 } from '@headlessui/vue';
 import {
     ArrowPathIcon,
@@ -19,9 +24,12 @@ import {
     CurrencyDollarIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+import { UserCircleIcon } from '@heroicons/vue/24/solid';
 import ColorLogo from '@/Components/ColorLogo.vue';
-import { Link } from '@inertiajs/inertia-vue3';
+import { usePage, Link } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 
+const auth = computed(() => usePage().props.value.auth?.user);
 const solutions = [
     {
         name: 'Analytics',
@@ -90,7 +98,6 @@ const resources = [
         href: '#',
     },
 ];
-
 const nominationOptions = [
     {
         name: 'Nominate Individual',
@@ -117,6 +124,10 @@ const navOptions = [
 ];
 
 const mobileNavOptions = [...navOptions, ...nominationOptions];
+
+function logout() {
+    Inertia.post(route('logout'));
+}
 </script>
 
 <template>
@@ -380,16 +391,61 @@ const mobileNavOptions = [...navOptions, ...nominationOptions];
             <div
                 class="hidden items-center justify-end md:flex md:flex-1 lg:w-0"
             >
-                <a
-                    href="#"
-                    class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-                    >Sign in</a
-                >
-                <a
-                    href="#"
-                    class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-bold text-white shadow-sm hover:bg-green-700"
-                    >Membership</a
-                >
+                <Menu v-if="auth" as="div" class="relative ml-4 flex-shrink-0">
+                    <div>
+                        <MenuButton
+                            class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                        >
+                            <span class="sr-only">Open user menu</span>
+                            <UserCircleIcon class="w-8 h-8 text-green-600" />
+                        </MenuButton>
+                    </div>
+                    <transition
+                        enter-active-class="transition ease-out duration-100"
+                        enter-from-class="transform opacity-0 scale-95"
+                        enter-to-class="transform opacity-100 scale-100"
+                        leave-active-class="transition ease-in duration-75"
+                        leave-from-class="transform opacity-100 scale-100"
+                        leave-to-class="transform opacity-0 scale-95"
+                    >
+                        <MenuItems
+                            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        >
+                            <MenuItem v-slot="{ active }">
+                                <a
+                                    :href="route('nova.pages.dashboard')"
+                                    :class="[
+                                        active ? 'bg-gray-100' : '',
+                                        'block px-4 py-2 text-sm text-gray-700',
+                                    ]"
+                                    >Admin Panel</a
+                                >
+                            </MenuItem>
+                            <MenuItem v-slot="{ active }">
+                                <a
+                                    @click="logout"
+                                    :class="[
+                                        active ? 'bg-gray-100' : '',
+                                        'block px-4 py-2 text-sm text-gray-700',
+                                    ]"
+                                    >Sign out</a
+                                >
+                            </MenuItem>
+                        </MenuItems>
+                    </transition>
+                </Menu>
+                <div v-else>
+                    <Link
+                        :href="route('login')"
+                        class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                        >Sign in</Link
+                    >
+                    <Link
+                        :href="route('register')"
+                        class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-bold text-white shadow-sm hover:bg-green-700"
+                        >Become A Member</Link
+                    >
+                </div>
             </div>
         </div>
 
@@ -466,7 +522,7 @@ const mobileNavOptions = [...navOptions, ...nominationOptions];
                                     <template v-else>
                                         <Link
                                             :href="option.href"
-                                            class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
+                                            class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-100"
                                         >
                                             <div
                                                 class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
@@ -522,21 +578,56 @@ const mobileNavOptions = [...navOptions, ...nominationOptions];
                                 >{{ resource.name }}</a
                             >
                         </div> -->
-                        <div class="mt-6">
-                            <a
-                                href="#"
+                        <div v-if="auth">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <UserCircleIcon
+                                        class="w-10 h-10 text-green-600"
+                                    />
+                                </div>
+                                <div class="ml-3">
+                                    <div
+                                        class="text-base font-medium text-gray-500"
+                                    >
+                                        {{ auth.first_name }}
+                                        {{ auth.last_name }}
+                                    </div>
+                                    <div
+                                        class="text-sm font-medium text-gray-400"
+                                    >
+                                        {{ auth.email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 space-y-4">
+                                <a
+                                    :href="route('nova.pages.dashboard')"
+                                    class="block py-2 text-gray-700 -m-3 rounded-md p-3 hover:bg-gray-100"
+                                    >Admin Panel</a
+                                >
+
+                                <a
+                                    @click="logout"
+                                    class="block py-2 text-gray-700 -m-3 rounded-md p-3 hover:bg-gray-100"
+                                    >Sign out</a
+                                >
+                            </div>
+                        </div>
+                        <div v-else class="mt-6">
+                            <Link
+                                :href="route('register')"
                                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700"
-                                >Become A Member</a
+                                >Become A Member</Link
                             >
                             <p
                                 class="mt-6 text-center text-base font-medium text-gray-500"
                             >
                                 Existing member?
                                 {{ ' ' }}
-                                <a
-                                    href="#"
+                                <Link
+                                    :href="route('login')"
                                     class="text-green-600 hover:text-green-500"
-                                    >Sign in</a
+                                    >Sign in</Link
                                 >
                             </p>
                         </div>

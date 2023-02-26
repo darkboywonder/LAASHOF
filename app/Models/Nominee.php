@@ -9,6 +9,10 @@ class Nominee extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'birthday' => 'date',
+    ];
+
     public function nominator()
     {
         return $this->belongsTo(Nominator::class);
