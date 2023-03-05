@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -107,7 +108,11 @@ class Inductee extends Resource
             ]),
             TextList::make('School Names')->placeholder('Type the school name and press enter to add. Add multiple!'),
             TextList::make('Organization Names')->placeholder('Type the organization name and press enter to add. Add multiple!'),
-            HasOne::make('Nominator')->hideWhenUpdating(),
+            MorphTo::make('Nominator', 'nominatable')->types([
+                User::class,
+                Nominator::class,
+                Administrator::class,
+            ])->nullable()->showCreateRelationButton(),
             HasOne::make('Relative')->hideWhenUpdating(),
         ];
     }
