@@ -6,22 +6,18 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Email;
-use Laravel\Nova\Fields\Select;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\MorphMany;
-use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Administrator extends Resource
 {
+    public static $displayInNavigation = false;
+
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\User>
+     * @var class-string<\App\Models\Administrator>
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Administrator::class;
 
     /**
      * The columns that should be searched.
@@ -53,14 +49,6 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Select::make('Type')->options([
-                'nominator' => 'nominator',
-                'admin' => 'administrator',
-            ])
-                ->displayUsingLabels()
-                ->sortable()
-                ->rules('required', 'max:255'),
-
             Text::make('First Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -69,7 +57,7 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Phone')
+                Text::make('Phone')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
@@ -94,11 +82,6 @@ class User extends Resource
             Text::make('Zip')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            Password::make('Password')
-                ->onlyOnForms(),
-
-            MorphMany::make('Nominees'),
         ];
     }
 

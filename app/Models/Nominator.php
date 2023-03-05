@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Parental\HasParent;
 
 class Nominator extends User
@@ -11,8 +12,8 @@ class Nominator extends User
     use HasParent;
 
 
-    public function nominees()
+    public function nominees(): MorphMany
     {
-        return $this->hasMany(Nominee::class, 'nominator_id');
+        return $this->morphMany(Nominee::class, 'nominatable');
     }
 }

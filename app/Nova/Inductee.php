@@ -2,22 +2,26 @@
 
 namespace App\Nova;
 
+use Masoudi\Nova\TextList;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Nominee extends Resource
+class Inductee extends Resource
 {
 
-    /**
+        /**
      * Get the displayable label of the resource.
      *
      * @return string
@@ -25,7 +29,7 @@ class Nominee extends Resource
      */
     public static function label()
     {
-        return 'Individual Nominees';
+        return 'Individual Inductees';
     }
 
     public static $group = 'Hall';
@@ -33,9 +37,9 @@ class Nominee extends Resource
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Nominee>
+     * @var class-string<\App\Models\Inductee>
      */
-    public static $model = \App\Models\Nominee::class;
+    public static $model = \App\Models\Inductee::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -50,7 +54,7 @@ class Nominee extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'phone', 'category',
+        'id', 'first_name', 'last_name', 'phone', 'category', 'sport',
     ];
 
     /**
@@ -63,23 +67,47 @@ class Nominee extends Resource
     {
         return [
             ID::make()->sortable(),
+            Avatar::make('Photo'),
+            Text::make('Class'),
             Text::make('First name'),
             Text::make('Last name'),
+            Text::make('Nickname')->hideFromIndex(),
+            Text::make('Maiden Name')->hideFromIndex(),
             Date::make('Birthday'),
             Text::make('Gender'),
             Text::make('Phone'),
-            Text::make('Address'),
-            Text::make('City'),
-            Text::make('State'),
-            Text::make('Zip'),
+            Email::make(),
+            Text::make('Address')->hideFromIndex(),
+            Text::make('City')->hideFromIndex(),
+            Text::make('State')->hideFromIndex(),
+            Text::make('Zip')->hideFromIndex(),
+            Number::make('Blazer Size')->min(1)->step(1),
+            Select::make('T-shirt Size', 't_shirt_size')->options([
+                'extra-small' => 'xs',
+                'small' => 's',
+                'medium' => 'm',
+                'large' => 'l',
+                'extra-large' => 'xl',
+                'xxl' => 'xxl',
+                'xxxl' => 'xxxl',
+            ]),
             Select::make('Category')->options([
                 'athlete' => 'athlete',
                 'coach' => 'coach',
                 'offical' => 'offical',
                 'contributor' => 'contributor'
             ]),
+            Text::make('Sport'),
             Boolean::make('deceased'),
             Textarea::make('Accomplishment Summary'),
+            Textarea::make('Bio'),
+            Textarea::make('Notes'),
+            MultiSelect::make('League Types')->options([
+                'recreational' => 'recreational',
+                'scholastic' => 'scholastic',
+            ]),
+            TextList::make('School Names')->placeholder('Type the school name and press enter to add. Add multiple!'),
+            TextList::make('Organization Names')->placeholder('Type the organization name and press enter to add. Add multiple!'),
             MorphTo::make('Nominator', 'nominatable')->types([
                 User::class,
                 Nominator::class,
@@ -130,8 +158,6 @@ class Nominee extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [
-            (new Actions\InductNominee)->showInline(),
-        ];
+        return [];
     }
 }

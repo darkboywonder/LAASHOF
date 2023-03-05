@@ -28,8 +28,10 @@ class TeamNominationController extends Controller
             $teamNominee->members()->create($player);
         });
         // create nominator
+        // @todo test that this is saving a team nominee
         $nominator = Nominator::firstOrCreate(['email' => $request->input('nominator.email')], $request->input('nominator'));
         $teamNominee->nominator()->associate($nominator);
+        $teamNominee->save();
         //return to page
         return redirect()->back()->with('success', true);
     }
