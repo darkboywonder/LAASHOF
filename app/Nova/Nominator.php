@@ -20,13 +20,6 @@ class Nominator extends Resource
     public static $model = \App\Models\Nominator::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'first_name';
-
-    /**
      * The columns that should be searched.
      *
      * @var array
@@ -34,6 +27,16 @@ class Nominator extends Resource
     public static $search = [
         'id', 'first_name', 'last_name', 'email',
     ];
+
+    /**
+     * Get the value that should be displayed to represent the resource.
+     *
+     * @return string
+     */
+    public function title()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 
     /**
      * Get the fields displayed by the resource.

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad3b860dc8ef062545ea1c8fde7d9947",
+    "content-hash": "7a4cdff6e615f82706ae1da7f5a65f42",
     "packages": [
         {
             "name": "brick/math",
@@ -2404,6 +2404,53 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "masoudi/nova-textlist-field",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rezamasoudi/nova-textlist-field.git",
+                "reference": "62ab3aa4fbaf07815aca3099cdf07be75f5cac4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rezamasoudi/nova-textlist-field/zipball/62ab3aa4fbaf07815aca3099cdf07be75f5cac4f",
+                "reference": "62ab3aa4fbaf07815aca3099cdf07be75f5cac4f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Masoudi\\Nova\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Masoudi\\Nova\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "text list field for the Laravel Nova",
+            "keywords": [
+                "input",
+                "laravel",
+                "nova",
+                "tags"
+            ],
+            "support": {
+                "issues": "https://github.com/rezamasoudi/nova-textlist-field/issues",
+                "source": "https://github.com/rezamasoudi/nova-textlist-field/tree/0.2"
+            },
+            "time": "2022-09-04T10:25:54+00:00"
         },
         {
             "name": "monolog/monolog",
