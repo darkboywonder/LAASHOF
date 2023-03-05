@@ -3,11 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Parental\HasChildren;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Parental\HasChildren;
 
 class User extends Authenticatable
 {
@@ -38,4 +39,9 @@ class User extends Authenticatable
         'admin' => Administrator::class,
         'member' => Member::class,
     ];
+
+    public function nominees(): MorphMany
+    {
+        return $this->morphMany(Nominee::class, 'nominatable');
+    }
 }
