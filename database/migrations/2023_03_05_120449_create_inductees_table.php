@@ -37,9 +37,9 @@ return new class extends Migration
             $table->integer('blazer_size')->nullable();
             $table->string('t_shirt_size')->nullable();
             $table->text('bio')->nullable();
-            $table->json('league_type')->nullable();
-            $table->string('school_name')->nullable();
-            $table->json('organization_name')->nullable();
+            $table->json('league_types')->nullable();
+            $table->json('school_names')->nullable();
+            $table->json('organization_names')->nullable();
             $table->string('status')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
