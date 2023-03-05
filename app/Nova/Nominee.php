@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Nominee extends Resource
@@ -49,7 +50,7 @@ class Nominee extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'phone',
+        'id', 'first_name', 'last_name', 'phone', 'category',
     ];
 
     /**
@@ -79,7 +80,11 @@ class Nominee extends Resource
             ]),
             Boolean::make('deceased'),
             Textarea::make('Accomplishment Summary'),
-            HasOne::make('Nominator')->hideWhenUpdating(),
+            MorphTo::make('Nominator', 'nominatable')->types([
+                User::class,
+                Nominator::class,
+                Administrator::class,
+            ])->nullable()->showCreateRelationButton(),
             HasOne::make('Relative')->hideWhenUpdating(),
         ];
     }
@@ -125,6 +130,8 @@ class Nominee extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            (new Actions\InductNominee)->showInline(),
+        ];
     }
 }
