@@ -10,25 +10,18 @@ use Laravel\Nova\Fields\Select;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
-
     /**
      * The model the resource corresponds to.
      *
      * @var class-string<\App\Models\User>
      */
     public static $model = \App\Models\User::class;
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'first_name';
 
     /**
      * The columns that should be searched.
@@ -38,6 +31,16 @@ class User extends Resource
     public static $search = [
         'id', 'first_name', 'last_name', 'email',
     ];
+
+    /**
+     * Get the value that should be displayed to represent the resource.
+     *
+     * @return string
+     */
+    public function title()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -95,7 +98,7 @@ class User extends Resource
             Password::make('Password')
                 ->onlyOnForms(),
 
-            HasMany::make('Nominees'),
+            MorphMany::make('Nominees'),
         ];
     }
 
