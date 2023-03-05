@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('inductees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nominator_id')->nullable();
+            $table->unsignedBigInteger('nominatable_id')->nullable();
+            $table->string('nominatable_type')->nullable();
             $table->string('class');
             $table->string('photo')->nullable();
             $table->string('first_name');
