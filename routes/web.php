@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
+use App\Http\Controllers\OurStoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/nominate/team', [TeamNominationController::class, 'create'])->name(
 Route::post('/nominate/team', [TeamNominationController::class, 'store'])->name('nominate.team.store');
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'post'])->name('contact.post');
+Route::get('/about/story', OurStoryController::class)->name('about.story');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
