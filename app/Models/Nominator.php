@@ -11,7 +11,6 @@ class Nominator extends User
     use HasFactory;
     use HasParent;
 
-
     public function nominees(): MorphMany
     {
         return $this->morphMany(Nominee::class, 'nominatable');
