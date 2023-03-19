@@ -27,7 +27,7 @@ class Nominee extends Resource
         return 'Individual Nominees';
     }
 
-    public static $group = 'Hall';
+    public static $group = 'Nominations';
 
     /**
      * The model the resource corresponds to.
@@ -37,11 +37,14 @@ class Nominee extends Resource
     public static $model = \App\Models\Nominee::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
+     * Get the value that should be displayed to represent the resource.
      *
-     * @var string
+     * @return string
      */
-    public static $title = 'first_name';
+    public function title()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 
     /**
      * The columns that should be searched.
