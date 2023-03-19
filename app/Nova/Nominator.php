@@ -3,14 +3,15 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Nominator extends Resource
 {
-    public static $displayInNavigation = false;
+    public static $group = 'Users';
 
     /**
      * The model the resource corresponds to.
@@ -61,7 +62,7 @@ class Nominator extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Email')
+            Email::make()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
@@ -69,19 +70,30 @@ class Nominator extends Resource
 
             Text::make('Address')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->hideFromIndex(),
 
             Text::make('City')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->hideFromIndex(),
 
             Text::make('State')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->hideFromIndex(),
 
             Text::make('Zip')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->hideFromIndex(),
+
+            DateTime::make('Last Provided Nomination At', 'updated_at')
+                ->sortable()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
+            MorphMany::make('Nominees'),
         ];
     }
 
