@@ -222,14 +222,15 @@ class StoreIndividualNominationTest extends TestCase
     }
 
     /** @test */
-    public function a_nominator_is_created_and_associated_to_the_nominee_on_a_successful_submission()
+    public function a_poly_nominator_is_created_and_associated_to_the_nominee_on_a_successful_submission()
     {
         $response = $this->post(route('nominate.individual.store'), $this->validParams());
 
         $nominee = Nominee::with('nominator')->firstWhere('email', 'kento633@gmail.com');
         $response->assertRedirect();
         $this->assertNotNull($nominee);
-        $this->assertNotNull($nominee->nominator);
+        // nominatable can be an admin, member, nominator or user class
+        $this->assertNotNull($nominee->nominatable);
     }
 
     /** @test */
