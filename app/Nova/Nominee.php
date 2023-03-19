@@ -3,15 +3,14 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Nominee extends Resource
@@ -28,7 +27,7 @@ class Nominee extends Resource
         return 'Individual Nominees';
     }
 
-    public static $group = 'Hall';
+    public static $group = 'Nominations';
 
     /**
      * The model the resource corresponds to.
@@ -38,11 +37,14 @@ class Nominee extends Resource
     public static $model = \App\Models\Nominee::class;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
+     * Get the value that should be displayed to represent the resource.
      *
-     * @var string
+     * @return string
      */
-    public static $title = 'first_name';
+    public function title()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 
     /**
      * The columns that should be searched.
@@ -50,7 +52,7 @@ class Nominee extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'phone', 'category',
+        'id', 'first_name', 'last_name', 'gender', 'category'
     ];
 
     /**
@@ -63,29 +65,68 @@ class Nominee extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('First name'),
-            Text::make('Last name'),
-            Date::make('Birthday'),
-            Text::make('Gender'),
-            Text::make('Phone'),
-            Text::make('Address'),
-            Text::make('City'),
-            Text::make('State'),
-            Text::make('Zip'),
+
+            Text::make('First name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Last name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Date::make('Birthday')
+                ->nullable()
+                ->sortable(),
+
+            Text::make('Gender')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Phone')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make('Address')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make('City')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make('State')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make('Zip')
+                ->nullable()
+                ->hideFromIndex(),
+
             Select::make('Category')->options([
                 'athlete' => 'athlete',
                 'coach' => 'coach',
                 'offical' => 'offical',
                 'contributor' => 'contributor'
-            ]),
-            Boolean::make('deceased'),
-            Textarea::make('Accomplishment Summary'),
+            ])
+                ->sortable()
+                ->rules('required'),
+
+            Boolean::make('deceased')
+                ->sortable()
+                ->rules('required'),
+
+            Textarea::make('Accomplishment Summary')->nullable(),
             MorphTo::make('Nominator', 'nominatable')->types([
-                User::class,
                 Nominator::class,
                 Administrator::class,
             ])->nullable()->showCreateRelationButton(),
+
             HasOne::make('Relative')->hideWhenUpdating(),
+
+            DateTime::make('Nominated On', 'created_at')
+                ->sortable()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
         ];
     }
 
