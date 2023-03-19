@@ -20,7 +20,7 @@ class TeamNominee extends Resource
      */
     public static $model = \App\Models\TeamNominee::class;
 
-    public static $group = 'Hall';
+    public static $group = 'Nominations';
 
     /**
      * The single value that should be used to represent the resource when being displayed.

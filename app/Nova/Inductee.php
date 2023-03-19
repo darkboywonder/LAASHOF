@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Masoudi\Nova\TextList;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Email;
@@ -14,6 +13,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -54,7 +54,7 @@ class Inductee extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'phone', 'category', 'sport',
+        'id', 'first_name', 'last_name', 'phone', 'category', 'sport', 'class',
     ];
 
     /**
@@ -81,7 +81,7 @@ class Inductee extends Resource
             Text::make('City')->hideFromIndex(),
             Text::make('State')->hideFromIndex(),
             Text::make('Zip')->hideFromIndex(),
-            Number::make('Blazer Size')->min(1)->step(1),
+            Number::make('Blazer Size')->min(1)->step(1)->hideFromIndex(),
             Select::make('T-shirt Size', 't_shirt_size')->options([
                 'extra-small' => 'xs',
                 'small' => 's',
@@ -90,7 +90,7 @@ class Inductee extends Resource
                 'extra-large' => 'xl',
                 'xxl' => 'xxl',
                 'xxxl' => 'xxxl',
-            ]),
+            ])->hideFromIndex(),
             Select::make('Category')->options([
                 'athlete' => 'athlete',
                 'coach' => 'coach',
@@ -105,15 +105,18 @@ class Inductee extends Resource
             MultiSelect::make('League Types')->options([
                 'recreational' => 'recreational',
                 'scholastic' => 'scholastic',
-            ]),
-            TextList::make('School Names')->placeholder('Type the school name and press enter to add. Add multiple!'),
-            TextList::make('Organization Names')->placeholder('Type the organization name and press enter to add. Add multiple!'),
+            ])->hideFromIndex(),
+            TextList::make('School Names')->placeholder('Type the school name and press enter to add. Add multiple!')->hideFromIndex(),
+            TextList::make('Organization Names')->placeholder('Type the organization name and press enter to add. Add multiple!')->hideFromIndex(),
             MorphTo::make('Nominator', 'nominatable')->types([
-                User::class,
                 Nominator::class,
                 Administrator::class,
             ])->nullable()->showCreateRelationButton(),
             HasOne::make('Relative')->hideWhenUpdating(),
+            DateTime::make('Inducted On', 'created_at')
+                ->sortable()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
         ];
     }
 
