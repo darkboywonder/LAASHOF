@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OurStoryController;
+use App\Http\Controllers\FounderMessageController;
 use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
-use App\Http\Controllers\OurStoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::post('/nominate/team', [TeamNominationController::class, 'store'])->name(
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'post'])->name('contact.post');
 Route::get('/about/story', OurStoryController::class)->name('about.story');
+Route::get('/about/message', FounderMessageController::class)->name('about.message');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
