@@ -22,6 +22,7 @@ import {
     UserGroupIcon,
     XMarkIcon,
     CurrencyDollarIcon,
+    BookOpenIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { UserCircleIcon } from '@heroicons/vue/24/solid';
@@ -104,6 +105,21 @@ const nominationOptions = [
         description: 'Nominate an athlete, coach, official, or contributor.',
         href: route('nominate.individual.create'),
         icon: UserIcon,
+    },
+    {
+        name: 'Nominate Team',
+        description: 'Nominate an outstanding local sports team.',
+        href: route('nominate.team.create'),
+        icon: UserGroupIcon,
+    },
+];
+
+const aboutOptions = [
+    {
+        name: 'Our Story',
+        description: 'Learn more about our story',
+        href: route('about.story'),
+        icon: BookOpenIcon,
     },
     {
         name: 'Nominate Team',
@@ -296,12 +312,81 @@ function logout() {
                     </transition>
                 </Popover> -->
 
+                <!-- desktop nav -->
                 <Link
                     :href="route('home')"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
                     Home
                 </Link>
+
+                <Popover class="relative z-20" v-slot="{ open }">
+                    <PopoverButton
+                        :class="[
+                            open ? 'text-gray-900' : 'text-gray-500',
+                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2',
+                        ]"
+                    >
+                        <span>About</span>
+                        <ChevronDownIcon
+                            :class="[
+                                open ? 'text-gray-600' : 'text-gray-400',
+                                'ml-2 h-5 w-5 group-hover:text-gray-500',
+                            ]"
+                            aria-hidden="true"
+                        />
+                    </PopoverButton>
+
+                    <transition
+                        enter-active-class="transition ease-out duration-200"
+                        enter-from-class="opacity-0 translate-y-1"
+                        enter-to-class="opacity-100 translate-y-0"
+                        leave-active-class="transition ease-in duration-150"
+                        leave-from-class="opacity-100 translate-y-0"
+                        leave-to-class="opacity-0 translate-y-1"
+                    >
+                        <PopoverPanel
+                            class="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0"
+                        >
+                            <div
+                                class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+                            >
+                                <div
+                                    class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8"
+                                >
+                                    <Link
+                                        v-for="option in aboutOptions"
+                                        :key="option.name"
+                                        :href="option.href"
+                                        class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
+                                    >
+                                        <div
+                                            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-red-600 text-white sm:h-12 sm:w-12"
+                                        >
+                                            <component
+                                                :is="option.icon"
+                                                class="h-6 w-6"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <div class="ml-4">
+                                            <p
+                                                class="text-base font-medium text-gray-900"
+                                            >
+                                                {{ option.name }}
+                                            </p>
+                                            <p
+                                                class="mt-1 text-sm text-gray-500"
+                                            >
+                                                {{ option.description }}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+                        </PopoverPanel>
+                    </transition>
+                </Popover>
                 <a
                     href="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
