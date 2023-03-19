@@ -14,11 +14,6 @@ class Nominee extends Model
         'birthday' => 'date',
     ];
 
-    public function nominator()
-    {
-        return $this->belongsTo(User::class, 'nominator_id', 'id');
-    }
-
     public function relative()
     {
         return $this->hasOne(Relative::class);
