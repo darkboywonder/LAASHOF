@@ -56,7 +56,7 @@ defineProps({ founders: Array });
                                 class="aspect-[14/13] w-full rounded-2xl object-cover"
                                 :src="
                                     founder.profile
-                                        ? `/${founder.profile}`
+                                        ? `/storage/${founder.profile}`
                                         : '/images/default.png'
                                 "
                                 :alt="
