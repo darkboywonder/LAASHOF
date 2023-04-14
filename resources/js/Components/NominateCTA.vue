@@ -17,8 +17,10 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <span class="block text-amber-500">Nominate someone now!</span>
             </h2>
             <p class="mt-4 text-lg leading-6 text-white">
-                The 2023 Hall of Fame nomination process is now open with a
-                submission deadline of February 28 at 11:59pm EST.
+                All individual and team nominations will remain eligible for
+                selection for five years after the submission date. Nominations
+                received by October 31 will be considered for the next induction
+                class.
             </p>
             <p class="sm:space-x-4">
                 <Link
