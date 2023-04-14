@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Founder;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,8 +15,6 @@ class FounderMessageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('About/Message', [
-            'founders' => Founder::orderBy('order')->get(),
-        ]);
+        return Inertia::render('About/Message');
     }
 }
