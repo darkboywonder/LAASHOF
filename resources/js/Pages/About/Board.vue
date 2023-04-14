@@ -56,7 +56,7 @@ defineProps({ boardMembers: Array });
                                 class="aspect-[14/13] w-full rounded-2xl object-cover"
                                 :src="
                                     member.profile
-                                        ? `/${member.profile}`
+                                        ? `/storage/${member.profile}`
                                         : '/images/default.png'
                                 "
                                 :alt="
