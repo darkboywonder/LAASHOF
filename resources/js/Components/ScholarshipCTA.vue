@@ -26,12 +26,12 @@ import { AcademicCapIcon } from '@heroicons/vue/24/outline';
                 <p
                     class="mt-2 text-3xl font-bold tracking-tight text-amber-500 sm:text-4xl"
                 >
-                    We support future hall of famers!
+                    We support high school athletes!
                 </p>
                 <p class="mt-3 text-lg text-gray-300">
-                    It is our goal to award five graduating student-athletes who
-                    will be attending an accredited college or university with a
-                    scholarship.
+                    We aim to award supplementary scholarships to graduating
+                    student-athletes who've earned a partial sports scholarship
+                    to an accredited college or university.
                 </p>
                 <div class="mt-8">
                     <div class="inline-flex rounded-md shadow">

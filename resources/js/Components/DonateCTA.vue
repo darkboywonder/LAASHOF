@@ -47,10 +47,10 @@ onMounted(function () {
                         Help make our legends shine!
                     </p>
                     <p class="mt-3 text-lg text-gray-300 max-w-[600px]">
-                        As we gear up for our 2023 Induction Ceremony and Gala,
-                        we ask for your continued support in helping us to shine
-                        the spotlight on our hometown sports legends and in
-                        awarding college scholarships.
+                        As we gear up for our annual LAASHOF Induction Ceremony
+                        and Gala, we ask for your continued support in helping
+                        us to shine the spotlight on our hometown sports legends
+                        and in awarding college scholarships.
                     </p>
                     <div class="mt-8">
                         <div id="donate-button-container">
