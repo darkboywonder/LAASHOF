@@ -23,6 +23,7 @@ import {
     XMarkIcon,
     CurrencyDollarIcon,
     BookOpenIcon,
+    DocumentTextIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { UserCircleIcon } from '@heroicons/vue/24/solid';
@@ -122,9 +123,21 @@ const aboutOptions = [
         icon: BookOpenIcon,
     },
     {
-        name: 'Nominate Team',
-        description: 'Nominate an outstanding local sports team.',
-        href: route('nominate.team.create'),
+        name: "Founder's Message",
+        description: 'Read about what drives our founders ',
+        href: route('about.message'),
+        icon: DocumentTextIcon,
+    },
+    {
+        name: 'Founding Members',
+        description: 'View our founding members',
+        href: route('about.founding-members'),
+        icon: UserGroupIcon,
+    },
+    {
+        name: 'Board of Directors',
+        description: 'View our board of directors',
+        href: route('about.board'),
         icon: UserGroupIcon,
     },
 ];
