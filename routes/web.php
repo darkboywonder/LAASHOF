@@ -1,14 +1,16 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\BoardOfDirectorsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OurStoryController;
 use App\Http\Controllers\FounderMessageController;
+use App\Http\Controllers\FoundingMembersController;
 use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,8 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact.crea
 Route::post('/contact', [ContactController::class, 'post'])->name('contact.post');
 Route::get('/about/story', OurStoryController::class)->name('about.story');
 Route::get('/about/message', FounderMessageController::class)->name('about.message');
+Route::get('/about/founding-members', FoundingMembersController::class)->name('about.founding-members');
+Route::get('/about/board', BoardOfDirectorsController::class)->name('about.board');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
