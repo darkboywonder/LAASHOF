@@ -8,6 +8,7 @@ use App\Http\Controllers\FounderMessageController;
 use App\Http\Controllers\FoundingMembersController;
 use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
+use App\Http\Controllers\ScholarshipController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -40,6 +41,7 @@ Route::get('/nominate/individual', [IndividualNominationController::class, 'crea
 Route::post('/nominate/individual', [IndividualNominationController::class, 'store'])->name('nominate.individual.store');
 Route::get('/nominate/team', [TeamNominationController::class, 'create'])->name('nominate.team.create');
 Route::post('/nominate/team', [TeamNominationController::class, 'store'])->name('nominate.team.store');
+Route::get('/scholarship', [ScholarshipController::class, 'create'])->name('scholarship.create');
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactController::class, 'post'])->name('contact.post');
 Route::get('/about/story', OurStoryController::class)->name('about.story');
