@@ -76,18 +76,16 @@ function submit() {
             three qualifications for selection."
             @home="returnHome"
         />
-                    >Download the form here.
-                </a>
-            </p>
+        <PageHeader slug="Scholarship Form" class="relative z-0">
+            <p>Register a college-bound athlete for a partial scholarship.</p>
             <p>
-                See here for
-                <Link href="" class="text-green-600 hover:text-green-700"
-                    >rules.</Link
-                >
+                We will award multiple scholarships in the amount of $2500.00 to
+                graduating student-athletes who plan to attend an accredited
+                college or university in the fall.
             </p>
         </PageHeader>
         <ErrorAlert />
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" class="relative z-1">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h3
                     class="text-xl text-center font-medium leading-6 text-gray-900 mb-4"
@@ -492,6 +490,7 @@ function submit() {
                                             <Label
                                                 for="applicant-accomplishment-summary"
                                                 value="Summarize Accomplishments"
+                                                required
                                             />
                                             <p
                                                 class="text-sm leading-5 text-gray-500"
@@ -513,6 +512,7 @@ function submit() {
                                                     form.applicant
                                                         .accomplishment_summary
                                                 "
+                                                required
                                             />
                                         </div>
                                         <div class="col-span-6">
@@ -609,11 +609,11 @@ function submit() {
                                 <h3
                                     class="text-lg font-medium leading-6 text-gray-900"
                                 >
-                                    Your Information
+                                    Parent Information
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Please provide information for the person
-                                    making the nomination.
+                                    Please provide information for the guardian
+                                    of the applicant.
                                 </p>
                             </div>
                         </div>
