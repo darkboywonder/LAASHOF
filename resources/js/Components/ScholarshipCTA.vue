@@ -36,9 +36,10 @@ import { AcademicCapIcon } from '@heroicons/vue/24/outline';
                 <div class="mt-8">
                     <div class="inline-flex rounded-md shadow">
                         <a
+                            :href="route('scholarship.create')"
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-bold text-amber-600 hover:bg-gray-50"
                         >
-                            Opening in May
+                            Apply Today
                         </a>
                     </div>
                 </div>

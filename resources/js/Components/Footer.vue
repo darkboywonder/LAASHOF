@@ -31,11 +31,11 @@
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
                             <h3 class="text-base font-bold text-white">
-                                Solutions
+                                About
                             </h3>
                             <ul role="list" class="mt-4 space-y-4">
                                 <li
-                                    v-for="item in navigation.solutions"
+                                    v-for="item in navigation.about"
                                     :key="item.name"
                                 >
                                     <a
@@ -67,11 +67,11 @@
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
                             <h3 class="text-base font-bold text-white">
-                                Company
+                                Engage
                             </h3>
                             <ul role="list" class="mt-4 space-y-4">
                                 <li
-                                    v-for="item in navigation.company"
+                                    v-for="item in navigation.engage"
                                     :key="item.name"
                                 >
                                     <a
@@ -82,7 +82,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="mt-12 md:mt-0">
+                        <!-- <div class="mt-12 md:mt-0">
                             <h3 class="text-base font-bold text-white">
                                 Legal
                             </h3>
@@ -98,12 +98,12 @@
                                     >
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
-            <div
+            <!-- <div
                 class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between mt-8"
             >
                 <div>
@@ -139,7 +139,7 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <div
                 class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-center"
             >
@@ -157,23 +157,34 @@ import FlatLogo from './FlatLogo.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 
 const navigation = {
-    solutions: [
-        { name: 'Marketing', href: '#' },
-        { name: 'Analytics', href: '#' },
-        { name: 'Commerce', href: '#' },
-        { name: 'Insights', href: '#' },
+    about: [
+        { name: 'Our Story', href: route('about.story') },
+        { name: "Founder's Message", href: route('about.message') },
+        { name: 'Founding Members', href: route('about.founding-members') },
+        { name: 'Board of Directors', href: route('about.board') },
     ],
     support: [
-        { name: 'Pricing', href: '#' },
-        { name: 'Documentation', href: '#' },
-        { name: 'Guides', href: '#' },
-        { name: 'API Status', href: '#' },
+        {
+            name: 'Gala Tickets',
+            href: 'https://www.ticketmaster.com/event/16005E6B1534836F',
+        },
+        {
+            name: 'Donate',
+            href: 'https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS',
+        },
+        {
+            name: 'Sponsor Brochure',
+            href: '/sponsorship_proposal.pdf',
+        },
+        { name: 'Become a member', href: route('register') },
     ],
-    company: [
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Jobs', href: '#' },
-        { name: 'Press', href: '#' },
+    engage: [
+        {
+            name: 'Nominate Individual',
+            href: route('nominate.individual.create'),
+        },
+        { name: 'Nominate Team', href: route('nominate.team.create') },
+        { name: 'Submit Scholarship', href: route('scholarship.create') },
     ],
     legal: [
         { name: 'Claim', href: '#' },

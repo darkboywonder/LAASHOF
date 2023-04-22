@@ -109,7 +109,22 @@ function again() {
 
 <template>
     <AppLayout>
-        <SuccessModal :open="modalOpen" @home="returnHome" @again="again" />
+        <SuccessModal
+            :open="modalOpen"
+            type="Team"
+            title="Thank you for your nomination!"
+            message="Our Nominations Committee will
+            process it to verify it meets the
+            four qualifications for selection.
+            It will then be presented to the
+            Selections Committee, where it will
+            be considered for the 2023 induction
+            class, to be announced in mid-March
+            2023."
+            @home="returnHome"
+            @again="again"
+            canRepeat
+        />
         <PageHeader
             slug="Team Nomination Form"
             description="Nominate a team for the upcoming induction class."

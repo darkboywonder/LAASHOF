@@ -24,6 +24,7 @@ import {
     CurrencyDollarIcon,
     BookOpenIcon,
     DocumentTextIcon,
+    AcademicCapIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { UserCircleIcon } from '@heroicons/vue/24/solid';
@@ -149,6 +150,13 @@ const navOptions = [
         href: 'https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS',
         icon: CurrencyDollarIcon,
         external: true,
+    },
+    {
+        name: 'Scholarship',
+        description: 'Apply for a supplimentary scholarship',
+        href: route('scholarship.create'),
+        icon: AcademicCapIcon,
+        external: false,
     },
 ];
 
@@ -475,11 +483,11 @@ function logout() {
                     </transition>
                 </Popover>
 
-                <!-- <a
-                    href="#"
+                <a
+                    :href="route('scholarship.create')"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
                     >Scholarship</a
-                > -->
+                >
                 <!-- <a
                     :href="route('contact.create')"
                     class="text-base font-medium text-gray-500 hover:text-gray-900"
