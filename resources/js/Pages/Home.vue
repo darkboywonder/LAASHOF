@@ -7,7 +7,6 @@ import NominateCTA from '@/Components/NominateCTA.vue';
 import DonateCTA from '@/Components/DonateCTA.vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-import ConstructionBanner from '@/ConstructionBanner.vue';
 import WordedLogoAlt from '@/Components/WordedLogoAlt.vue';
 
 const carouselSettings = {
@@ -40,7 +39,6 @@ defineComponent({
 
 <template>
     <AppLayout>
-        <ConstructionBanner />
         <div class="relative grid grid-cols-7">
             <div class="absolute top-0 left-0 z-0">
                 <!--prettier-ignore-->
