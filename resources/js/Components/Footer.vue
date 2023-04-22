@@ -185,7 +185,6 @@ const navigation = {
         },
         { name: 'Nominate Team', href: route('nominate.team.create') },
         { name: 'Submit Scholarship', href: route('scholarship.create') },
-        { name: 'Contact Us', href: '#' },
     ],
     legal: [
         { name: 'Claim', href: '#' },
