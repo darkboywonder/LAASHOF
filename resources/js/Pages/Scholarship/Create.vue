@@ -60,11 +60,6 @@ function returnHome() {
     Inertia.get(route('home'));
 }
 
-function again() {
-    modalOpen.value = false;
-    Inertia.get(route('nominate.individual.create'));
-}
-
 function submit() {
     Inertia.post(route('scholarship.store'), form);
 }
@@ -72,15 +67,15 @@ function submit() {
 
 <template>
     <AppLayout>
-        <SuccessModal :open="modalOpen" @home="returnHome" @again="again" />
-        <PageHeader slug="Scholarship Form">
-            <p>Nominate an Individual for the upcoming induction class.</p>
-            <p>
-                Prefer to mail in your nomination?
-                <a
-                    href="/forms/individual_nomination_form.pdf"
-                    download="team_nomination_form"
-                    class="text-green-600 hover:text-green-700"
+        <SuccessModal
+            :open="modalOpen"
+            type="Scholar"
+            title="Thank you for applying!"
+            message="Our Scholarship Committee will
+            process it to verify it meets the
+            three qualifications for selection."
+            @home="returnHome"
+        />
                     >Download the form here.
                 </a>
             </p>

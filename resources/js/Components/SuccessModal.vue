@@ -11,6 +11,13 @@ import { CheckIcon } from '@heroicons/vue/24/outline';
 const emit = defineEmits(['home', 'again']);
 
 defineProps({
+    title: String,
+    message: String,
+    canRepeat: {
+        type: Boolean,
+        default: false,
+    },
+    type: String,
     open: {
         type: Boolean,
         default: false,
@@ -64,21 +71,17 @@ defineProps({
                                     <DialogTitle
                                         as="h3"
                                         class="text-lg font-medium leading-6 text-gray-900"
-                                        >Thank you for your
-                                        nomination!</DialogTitle
+                                        >{{ title }}</DialogTitle
                                     >
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500">
-                                            Our Nominations Committee will
-                                            process it to verify it meets the
-                                            four qualifications for selection.
-                                            It will then be presented to the
-                                            Selections Committee, where it will
-                                            be considered for the 2023 induction
-                                            class, to be announced in mid-March
-                                            2023.
+                                            {{ message }}
                                         </p>
                                         <p
+                                            v-if="
+                                                type === 'individual' ||
+                                                type === 'Team'
+                                            "
                                             class="text-xs font-bold text-gray-600 mt-4"
                                         >
                                             Nominees are up for consideration up
@@ -91,11 +94,12 @@ defineProps({
                                 class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"
                             >
                                 <button
+                                    v-if="canRepeat"
                                     type="button"
                                     class="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-bold text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                                     @click="emit('again')"
                                 >
-                                    Nominate Another Person
+                                    Nominate Another {{ type }}
                                 </button>
                                 <button
                                     type="button"
