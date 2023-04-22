@@ -580,6 +580,7 @@ function submit() {
                                             <InputFile
                                                 :disabled="form.processing"
                                                 accept=".doc,.docx,.pdf,.txt,.jpg,.jpeg,.png"
+                                                accept-label=".doc, .docx, .pdf, .txt, .jpg, .jpeg, .png"
                                                 label="supporting_documents"
                                                 multiple
                                                 @update:model-value="
