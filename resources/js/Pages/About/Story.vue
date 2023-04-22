@@ -173,7 +173,7 @@ const stats = [
                                     class="mt-10 max-w-xl text-base leading-7 text-gray-700"
                                 >
                                     <p>
-                                        To provide supplemental scholarships to
+                                        Provide supplemental scholarships to
                                         local student-athletes who receive
                                         partial sports scholarships to college
                                         and could use additional financial
@@ -181,7 +181,7 @@ const stats = [
                                         athletic goals.
                                     </p>
                                     <p class="mt-10">
-                                        To secure a site for a permanent
+                                        Secure a site for a permanent
                                         display/museum of the LAASHOF awards as
                                         presented.
                                     </p>
