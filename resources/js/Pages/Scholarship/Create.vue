@@ -9,7 +9,7 @@ import Button from '@/Components/Button.vue';
 import { Inertia } from '@inertiajs/inertia';
 import { useStates } from '@/Composables/states.js';
 import ErrorAlert from '@/Components/ErrorAlert.vue';
-import { usePage, useForm, Link } from '@inertiajs/inertia-vue3';
+import { usePage, useForm } from '@inertiajs/inertia-vue3';
 import SuccessModal from '@/Components/SuccessModal.vue';
 import InputFile from '@/Components/InputFile.vue';
 
@@ -79,9 +79,9 @@ function submit() {
         <PageHeader slug="Scholarship Form" class="relative z-0">
             <p>Register a college-bound athlete for a partial scholarship.</p>
             <p>
-                We will award multiple scholarships in the amount of $2500.00 to
-                graduating student-athletes who plan to attend an accredited
-                college or university in the fall.
+                We will award multiple scholarships to graduating
+                student-athletes who plan to attend an accredited college or
+                university in the fall.
             </p>
         </PageHeader>
         <ErrorAlert />

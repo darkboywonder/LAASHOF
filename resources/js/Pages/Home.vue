@@ -8,6 +8,7 @@ import DonateCTA from '@/Components/DonateCTA.vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import WordedLogoAlt from '@/Components/WordedLogoAlt.vue';
+import Banner from '@/Components/Banner.vue';
 
 const carouselSettings = {
     itemsToShow: 1,
@@ -39,6 +40,12 @@ defineComponent({
 
 <template>
     <AppLayout>
+        <Banner
+            event-title="Telathon April 29th"
+            message="Join us on facebook live from 11am - 1pm"
+            button-title="Donate here"
+            link="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
+        />
         <div class="relative grid grid-cols-7">
             <div class="absolute top-0 left-0 z-0">
                 <!--prettier-ignore-->
