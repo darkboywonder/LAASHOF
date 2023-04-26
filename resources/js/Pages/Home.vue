@@ -41,7 +41,7 @@ defineComponent({
 <template>
     <AppLayout>
         <Banner
-            event-title="Telathon April 29th"
+            event-title="Telethon April 29th"
             message="Join us on facebook live from 11am - 1pm"
             button-title="Donate here"
             link="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
