@@ -7,10 +7,27 @@
                     <Link :href="route('home')">
                         <FlatLogo class="w-14 h-14 fill-white" />
                     </Link>
-                    <p class="text-base text-gray-300">
+                    <!-- <p class="text-base text-gray-300">
                         Lexington African American Sports Hall of Fame. Where
                         legends shine.
-                    </p>
+                    </p> -->
+                    <P class="text-base text-gray-300"> </P>
+                    <P class="text-base text-gray-300">
+                        <a
+                            class="text-base hover:text-white"
+                            href="mailto:info@laashof.com"
+                            >info@laashof.com</a
+                        >
+                        <br />
+                        <a
+                            class="text-base hover:text-white"
+                            href="telto:859-608-2175"
+                            >859-608-2175</a
+                        >
+                        <br />
+                        1588 Leestown Road P.O. <br />
+                        Box 130-312 Lexington, KY 40511
+                    </P>
                     <div class="flex space-x-6">
                         <a
                             v-for="item in navigation.social"
@@ -173,7 +190,7 @@ const navigation = {
             href: 'https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS',
         },
         {
-            name: 'Sponsor Brochure',
+            name: 'Corporate Sponsorship Package',
             href: '/sponsorship_proposal.pdf',
         },
         { name: 'Become a member', href: route('register') },
