@@ -25,8 +25,9 @@
                             >859-608-2175</a
                         >
                         <br />
-                        1588 Leestown Road P.O. <br />
-                        Box 130-312 Lexington, KY 40511
+                        1588 Leestown Road <br />
+                        P.O. Box 130-312 <br />
+                        Lexington, KY 40511
                     </P>
                     <div class="flex space-x-6">
                         <a
