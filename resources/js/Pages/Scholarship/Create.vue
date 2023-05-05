@@ -88,7 +88,7 @@ function submit() {
         <form @submit.prevent="submit" class="relative z-1">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h3
-                    class="text-xl text-center font-medium leading-6 text-gray-900 mb-4"
+                    class="text-xl text-center font-medium leading-6 text-gray-900 mb-2"
                 >
                     Qualifications
                 </h3>
@@ -105,6 +105,34 @@ function submit() {
                         college or university
                     </li>
                 </ol>
+
+                <h3
+                    class="text-xl text-center font-medium leading-6 text-gray-900 mt-4 mb-2"
+                >
+                    Letters of recommendation
+                </h3>
+                <p class="text-gray-600 text-center">
+                    If needed, you can submit your letters of recommendation at
+                    a later date. <br />
+                    You can email your letters to
+                    <a
+                        href="mailto:Jillchenaultwilson.laashof@gmail.com"
+                        class="text-green-700 hover:text-green-800"
+                    >
+                        Jillchenaultwilson.laashof@gmail.com
+                    </a>
+                    or
+                    <a
+                        href="mailto:Angelahampton.laashof@gmail.com"
+                        class="text-green-700 hover:text-green-800"
+                    >
+                        Angelahampton.laashof@gmail.com </a
+                    >. <br />
+                    You can also mail in your letters to: <br />
+                    LAASHOF <br />
+                    1588 Leestown Road <br />
+                    P.O. Box 130-312 Lexington, KY 40511 <br />
+                </p>
 
                 <div class="hidden sm:block" aria-hidden="true">
                     <div class="py-5">
@@ -577,6 +605,15 @@ function submit() {
                                                 for="supporting_documents"
                                                 value="Letters of Recommendations"
                                             />
+                                            <p
+                                                class="text-sm leading-5 text-gray-500"
+                                            >
+                                                Letters of recommendation can be
+                                                provided through email or mail
+                                                if you don't have them available
+                                                at this time. Please see the top
+                                                of the form for details.
+                                            </p>
                                             <InputFile
                                                 :disabled="form.processing"
                                                 accept=".doc,.docx,.pdf,.txt,.jpg,.jpeg,.png"
