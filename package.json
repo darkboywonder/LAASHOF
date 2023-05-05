@@ -28,6 +28,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.4",
         "@heroicons/vue": "^2.0.13",
-        "vue3-carousel": "^0.2.9"
+        "vue3-carousel": "^0.2.9",
+        "vue3-flip-countdown": "^0.1.6"
     }
 }

@@ -1,9 +1,10 @@
 <script setup>
 import { TicketIcon } from '@heroicons/vue/24/outline';
+import { Countdown } from 'vue3-flip-countdown';
 </script>
 
 <template>
-    <div class="bg-gray-900">
+    <div class="bg-zinc-900">
         <div class="mx-auto max-w-2xl py-16 px-6 text-center sm:py-20 lg:px-8">
             <h2
                 class="flex flex-col justify-center items-center text-3xl font-bold tracking-tight text-white sm:text-4xl"
@@ -19,6 +20,13 @@ import { TicketIcon } from '@heroicons/vue/24/outline';
             <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
                 Purchase tickets to attend our gala this fall!
             </p>
+            <Countdown
+                :deadlineDate="new Date('2023-09-23')"
+                labelColor="#fff"
+                mainColor="#f59e0b"
+                mainFlipBackgroundColor="#3f3f46"
+                secondFlipBackgroundColor="#71717a"
+            />
             <div class="mt-10 flex items-center justify-center gap-x-6">
                 <a
                     :href="'https://www.ticketmaster.com/event/16005E6B1534836F'"
