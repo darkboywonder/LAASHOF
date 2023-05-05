@@ -11,13 +11,7 @@ import {
     MenuItems,
 } from '@headlessui/vue';
 import {
-    ArrowPathIcon,
     Bars3Icon,
-    ChartBarIcon,
-    CursorArrowRaysIcon,
-    DocumentChartBarIcon,
-    ShieldCheckIcon,
-    Squares2X2Icon,
     UserIcon,
     UserGroupIcon,
     XMarkIcon,
@@ -25,6 +19,7 @@ import {
     BookOpenIcon,
     DocumentTextIcon,
     AcademicCapIcon,
+    GiftTopIcon,
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { UserCircleIcon } from '@heroicons/vue/24/solid';
@@ -33,74 +28,7 @@ import { usePage, Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
 const auth = computed(() => usePage().props.value.auth?.user);
-const solutions = [
-    {
-        name: 'Analytics',
-        description:
-            'Get a better understanding of where your traffic is coming from.',
-        href: '#',
-        icon: ChartBarIcon,
-    },
-    {
-        name: 'Engagement',
-        description:
-            'Speak directly to your customers in a more meaningful way.',
-        href: '#',
-        icon: CursorArrowRaysIcon,
-    },
-    {
-        name: 'Security',
-        description: "Your customers' data will be safe and secure.",
-        href: '#',
-        icon: ShieldCheckIcon,
-    },
-    {
-        name: 'Integrations',
-        description:
-            "Connect with third-party tools that you're already using.",
-        href: '#',
-        icon: Squares2X2Icon,
-    },
-    {
-        name: 'Automations',
-        description:
-            'Build strategic funnels that will drive your customers to convert',
-        href: '#',
-        icon: ArrowPathIcon,
-    },
-    {
-        name: 'Reports',
-        description:
-            'Get detailed reports that will help you make more informed decisions ',
-        href: '#',
-        icon: DocumentChartBarIcon,
-    },
-];
-const resources = [
-    {
-        name: 'Help Center',
-        description:
-            'Get all of your questions answered in our forums or contact support.',
-        href: '#',
-    },
-    {
-        name: 'Guides',
-        description:
-            'Learn how to maximize our platform to get the most out of it.',
-        href: '#',
-    },
-    {
-        name: 'Events',
-        description:
-            'See what meet-ups and other events we might be planning near you.',
-        href: '#',
-    },
-    {
-        name: 'Security',
-        description: 'Understand how we take your privacy seriously.',
-        href: '#',
-    },
-];
+
 const nominationOptions = [
     {
         name: 'Nominate Individual',
@@ -140,6 +68,23 @@ const aboutOptions = [
         description: 'View our board of directors',
         href: route('about.board'),
         icon: UserGroupIcon,
+    },
+];
+
+const donateOptions = [
+    {
+        name: 'Individual Donatations',
+        description: 'Donate to help our legends shine.',
+        href: 'https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS',
+        icon: CurrencyDollarIcon,
+        external: true,
+    },
+    {
+        name: 'Corporate Sponsorship Package',
+        description: 'Become a sponsor through our variety of offerings',
+        href: '/sponsorship_proposal.pdf',
+        icon: GiftTopIcon,
+        external: true,
     },
 ];
 
@@ -408,13 +353,107 @@ function logout() {
                         </PopoverPanel>
                     </transition>
                 </Popover>
-                <a
-                    href="https://www.paypal.com/donate/?hosted_button_id=YHDQSBNK7TSKS"
-                    class="text-base font-medium text-gray-500 hover:text-gray-900"
-                >
-                    Donate
-                </a>
+                <Popover class="relative z-20" v-slot="{ open }">
+                    <PopoverButton
+                        :class="[
+                            open ? 'text-gray-900' : 'text-gray-500',
+                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2',
+                        ]"
+                    >
+                        <span>Donate</span>
+                        <ChevronDownIcon
+                            :class="[
+                                open ? 'text-gray-600' : 'text-gray-400',
+                                'ml-2 h-5 w-5 group-hover:text-gray-500',
+                            ]"
+                            aria-hidden="true"
+                        />
+                    </PopoverButton>
 
+                    <transition
+                        enter-active-class="transition ease-out duration-200"
+                        enter-from-class="opacity-0 translate-y-1"
+                        enter-to-class="opacity-100 translate-y-0"
+                        leave-active-class="transition ease-in duration-150"
+                        leave-from-class="opacity-100 translate-y-0"
+                        leave-to-class="opacity-0 translate-y-1"
+                    >
+                        <PopoverPanel
+                            class="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0"
+                        >
+                            <div
+                                class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+                            >
+                                <div
+                                    class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8"
+                                >
+                                    <li
+                                        v-for="option in donateOptions"
+                                        :key="option.name"
+                                        class="list-none"
+                                    >
+                                        <template v-if="option?.external">
+                                            <a
+                                                :href="option.href"
+                                                class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
+                                            >
+                                                <div
+                                                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-black text-white"
+                                                >
+                                                    <component
+                                                        :is="option.icon"
+                                                        class="h-6 w-6"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900"
+                                                    >
+                                                        {{ option.name }}
+                                                    </p>
+                                                    <p
+                                                        class="mt-1 text-sm text-gray-500"
+                                                    >
+                                                        {{ option.description }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </template>
+                                        <template v-else>
+                                            <Link
+                                                :href="option.href"
+                                                class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-100"
+                                            >
+                                                <div
+                                                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-black text-white"
+                                                >
+                                                    <component
+                                                        :is="option.icon"
+                                                        class="h-6 w-6"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900"
+                                                    >
+                                                        {{ option.name }}
+                                                    </p>
+                                                    <p
+                                                        class="mt-1 text-sm text-gray-500"
+                                                    >
+                                                        {{ option.description }}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        </template>
+                                    </li>
+                                </div>
+                            </div>
+                        </PopoverPanel>
+                    </transition>
+                </Popover>
                 <Popover class="relative z-20" v-slot="{ open }">
                     <PopoverButton
                         :class="[
@@ -449,34 +488,68 @@ function logout() {
                                 <div
                                     class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8"
                                 >
-                                    <Link
+                                    <li
                                         v-for="option in nominationOptions"
                                         :key="option.name"
-                                        :href="option.href"
-                                        class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
+                                        class="list-none"
                                     >
-                                        <div
-                                            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white sm:h-12 sm:w-12"
-                                        >
-                                            <component
-                                                :is="option.icon"
-                                                class="h-6 w-6"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-                                        <div class="ml-4">
-                                            <p
-                                                class="text-base font-medium text-gray-900"
+                                        <template v-if="option?.external">
+                                            <a
+                                                :href="option.href"
+                                                class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-50"
                                             >
-                                                {{ option.name }}
-                                            </p>
-                                            <p
-                                                class="mt-1 text-sm text-gray-500"
+                                                <div
+                                                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
+                                                >
+                                                    <component
+                                                        :is="option.icon"
+                                                        class="h-6 w-6"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900"
+                                                    >
+                                                        {{ option.name }}
+                                                    </p>
+                                                    <p
+                                                        class="mt-1 text-sm text-gray-500"
+                                                    >
+                                                        {{ option.description }}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </template>
+                                        <template v-else>
+                                            <Link
+                                                :href="option.href"
+                                                class="-m-3 flex items-start rounded-md p-3 hover:bg-gray-100"
                                             >
-                                                {{ option.description }}
-                                            </p>
-                                        </div>
-                                    </Link>
+                                                <div
+                                                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-green-600 text-white"
+                                                >
+                                                    <component
+                                                        :is="option.icon"
+                                                        class="h-6 w-6"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900"
+                                                    >
+                                                        {{ option.name }}
+                                                    </p>
+                                                    <p
+                                                        class="mt-1 text-sm text-gray-500"
+                                                    >
+                                                        {{ option.description }}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        </template>
+                                    </li>
                                 </div>
                             </div>
                         </PopoverPanel>
