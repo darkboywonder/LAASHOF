@@ -5,6 +5,7 @@ import SponsorCloud from '@/Components/SponsorCloud.vue';
 import ScholarshipCTA from '@/Components/ScholarshipCTA.vue';
 import NominateCTA from '@/Components/NominateCTA.vue';
 import DonateCTA from '@/Components/DonateCTA.vue';
+import GalaCTA from '@/Components/GalaCTA.vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import WordedLogoAlt from '@/Components/WordedLogoAlt.vue';
@@ -75,6 +76,7 @@ defineComponent({
             </div>
         </div>
 
+        <GalaCTA />
         <div class="bg-white">
             <div class="mx-auto max-w-7xl py-16 px-6 sm:py-10 lg:px-8">
                 <div class="text-center">
