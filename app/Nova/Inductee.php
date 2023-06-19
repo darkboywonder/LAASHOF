@@ -20,8 +20,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Inductee extends Resource
 {
-
-        /**
+    /**
      * Get the displayable label of the resource.
      *
      * @return string
@@ -67,12 +66,18 @@ class Inductee extends Resource
     {
         return [
             ID::make()->sortable(),
-            Avatar::make('Photo'),
+            Avatar::make('Photo')->nullable(),
             Text::make('Class'),
             Text::make('First name'),
             Text::make('Last name'),
-            Text::make('Nickname')->hideFromIndex(),
-            Text::make('Maiden Name')->hideFromIndex(),
+            Text::make('Nickname')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Text::make('Maiden Name')
+                ->nullable()
+                ->hideFromIndex(),
+
             Date::make('Birthday'),
             Text::make('Gender'),
             Text::make('Phone'),
