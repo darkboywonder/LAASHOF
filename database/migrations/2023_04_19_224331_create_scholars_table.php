@@ -35,7 +35,7 @@ return new class extends Migration
             $table->text('accomplishment_summary');
             $table->text('barrier_summary');
             $table->text('essay');
-            $table->text('year_awarded')->nullable();
+            $table->string('year_awarded')->nullable();
             $table->timestamps();
         });
     }
