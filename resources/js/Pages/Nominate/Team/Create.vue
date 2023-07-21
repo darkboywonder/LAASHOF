@@ -479,6 +479,7 @@ function again() {
                                                 Please summarize the team's
                                                 accomplishments.
                                             </p>
+                                            <p class="text-xs leading-5 text-gray-600 mt-2">Example: <span class="italic">The 1937 West End High School Eagles baseball team won the 34th District title four years in a row. They went on to win the 21st Region championship three out of those four years, going undefeated twice. The Eagles won the Kentucky Negro High School Baseball Championship in 1936 and 1937. They were second runner-up in the American Negro High School Baseball Championship in 1937.</span></p>
                                             <textarea
                                                 id="nominee-accomplishment-summary"
                                                 name="nominee-accomplishment-summary"

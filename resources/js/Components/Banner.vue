@@ -78,13 +78,15 @@ defineProps({
                 class="flex flex-col sm:flex-row items-start text-sm leading-6 text-gray-900"
             >
                 <strong class="font-semibold">{{ eventTitle }}</strong>
-                <svg
-                    viewBox="0 0 2 2"
-                    class="hidden mx-2 sm:inline h-0.5 w-0.5 fill-current"
-                    aria-hidden="true"
-                >
-                    <circle cx="1" cy="1" r="1" />
-                </svg>
+                <div>
+                    <svg
+                        viewBox="0 0 2 2"
+                        class="hidden mx-2 sm:inline h-0.5 w-0.5 fill-current"
+                        aria-hidden="true"
+                    >
+                        <circle cx="1" cy="1" r="1" />
+                    </svg>
+                </div>
                 <span>{{ message }}</span>
             </p>
             <a

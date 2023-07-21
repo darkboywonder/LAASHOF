@@ -631,6 +631,7 @@ function submit() {
                                                 coach, contest official, or
                                                 contributor/supporter.
                                             </p>
+                                            <p class="text-xs leading-5 text-gray-600 mt-2">Example: <span class="italic">Jane Doe earned 1st Team All-State honors in 1982 while playing tennis at Bluegrass High School. Her team was state runner-up in 1982 and was ranked #7 in the nation. Jane had a career winning record of 32-2 while also setting a record for most career aces in her region. She earned a full athletic scholarship to play tennis at Hampton University and earned 1st Team All-MEAC honors in 1985 and 1986.</span></p>
                                             <textarea
                                                 id="nominee-accomplishment-summary"
                                                 name="nominee-accomplishment-summary"
