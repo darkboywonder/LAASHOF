@@ -17,7 +17,7 @@
                 >
                     <img
                         class="h-28"
-                        :src="image.path"
+                        :src="`/storage/${image.path}`"
                         :alt="image.name"
                     />
                 </div>
