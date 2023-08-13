@@ -9,6 +9,7 @@ use App\Http\Controllers\FoundingMembersController;
 use App\Http\Controllers\TeamNominationController;
 use App\Http\Controllers\IndividualNominationController;
 use App\Http\Controllers\ScholarshipController;
+use App\Models\SponsorImage;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,6 +31,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'sponsorImages' => SponsorImage::visible()->get(),
     ]);
 })->name('home');
 
