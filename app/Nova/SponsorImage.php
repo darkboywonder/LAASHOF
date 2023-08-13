@@ -46,13 +46,10 @@ class SponsorImage extends Resource
         return [
             ID::make()->sortable(),
             Image::make('Image', 'path')
-                ->download(function ($request, $model, $disk, $value) {
-                    return Storage::download($model->path, $model->name);
-                })
                 ->store(function (Request $request, $model) {
 
                     return [
-                        'path' => $request->path->store('images/sponsors', 'public'),
+                        'path' => $request->path->store('storage/images/sponsors', 'public'),
                         'name' => $request->path->getClientOriginalName(),
                         'extension' => $request->path->getClientOriginalExtension(),
                         'size' => $request->path->getSize(),
