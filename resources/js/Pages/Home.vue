@@ -28,6 +28,12 @@ const carouselBreakpoints = {
     },
 };
 
+defineProps({
+    sponsorImages: {
+        type: Object,
+    }
+});
+
 defineComponent({
     name: 'Basic',
     components: {
@@ -86,7 +92,7 @@ defineComponent({
                     <p
                         class="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
                     >
-                        2022 Inductees
+                        2023 Inductees
                     </p>
                     <p class="mx-auto mt-5 max-w-xl text-xl text-gray-500">
                         We congratulate and welcome the 2022 class of inductees
@@ -111,7 +117,7 @@ defineComponent({
             </Carousel>
         </div> -->
 
-        <SponsorCloud />
+        <SponsorCloud :sponsor-images="sponsorImages" />
         <NominateCTA />
         <ScholarshipCTA />
         <DonateCTA />
