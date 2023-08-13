@@ -47,7 +47,7 @@ class SponsorImage extends Resource
             Image::make('Image', 'path')
                 ->store(function (Request $request, $model) {
                     return [
-                        'path' => $request->path->store('storage/images/sponsors', 'public'),
+                        'path' => $request->path->store('images/sponsors'),
                         'name' => $request->path->getClientOriginalName(),
                         'extension' => $request->path->getClientOriginalExtension(),
                         'size' => $request->path->getSize(),
