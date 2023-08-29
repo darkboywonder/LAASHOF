@@ -85,7 +85,7 @@ defineComponent({
         <GalaCTA />
         <div class="bg-white">
             <div class="mx-auto max-w-7xl py-16 px-6 sm:py-10 lg:px-8">
-                <div class="text-center">
+                <div class="text-center mb-5">
                     <h2 class="text-lg font-semibold text-green-600">
                         Hall of Fame
                     </h2>
@@ -95,10 +95,13 @@ defineComponent({
                         2023 Inductees
                     </p>
                     <p class="mx-auto mt-5 max-w-xl text-xl text-gray-500">
-                        We congratulate and welcome the 2022 class of inductees
+                        We congratulate and welcome the 2023 class of inductees
                         into the hall of fame. We also thank our sponsors for
                         their support.
                     </p>
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="/images/2023_inductee_flyer.jpg" />
                 </div>
             </div>
         </div>
